@@ -19,7 +19,7 @@ La plateforme repose sur une architecture découplée, modulaire et hautement pe
 ```mermaid
 graph TD
     A["IHM Streamlit Frontend (Port 8501)"] -->|Requêtes HTTP + En-têtes SSO| B["FastAPI Backend Server (Port 8000)"]
-    B -->|Pydantic Validation (api/schemas.py)| C["Moteur Métier Actuariel (src/)"]
+    B -->|Pydantic Validation - api/schemas.py| C["Moteur Métier Actuariel (src/)"]
     C -->|Calcul & Réconciliation Actuarielle| E["Variance Analyzer (src/variance_analyzer.py)"]
     C -->|Gouvernance des Anomalies & Justifications| F["Anomaly Manager (src/anomaly_manager.py)"]
     F -->|Sauvegarde et Verrouillage Cryptographique| G[("data/uat_runs/ (JSON verrouillés + Integrity Hash)")]
