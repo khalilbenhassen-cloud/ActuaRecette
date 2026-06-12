@@ -34,7 +34,7 @@ graph TD
 
 ---
 
-## 3. Les Fonctionnalités Majeures (v6.0)
+## 3. Les Fonctionnalités Majeures
 
 ### 🔒 3.1. Cloisonnement & Gouvernance SecOps
 * **Authentification SSO & RBAC Sécurisée (SEC-01)** : Remplacement de la transmission d'en-têtes HTTP en texte brut par un mécanisme de signature de payload d'identité via jeton Bearer signé avec une clé HMAC-SHA256. Toute falsification ou expiration du jeton (24h) invalide la requête.
