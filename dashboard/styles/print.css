@@ -1,0 +1,117 @@
+/* ==========================================================================
+   ActuaRecette v6.0 \u2014 Print Stylesheet
+   ==========================================================================
+   Optimis\u00e9 pour les rapports PDF r\u00e9glementaires ACPR/Solvabilit\u00e9 II.
+   Force le fond blanc, masque les \u00e9l\u00e9ments interactifs, pr\u00e9serve les donn\u00e9es.
+   ========================================================================== */
+
+@media print {
+    /* ── Fond blanc pour impression ── */
+    :root {
+        --ar-bg-app:        #FFFFFF;
+        --ar-bg-surface:    #FFFFFF;
+        --ar-bg-elevated:   #F8FAFC;
+        --ar-text-primary:  #0F172A;
+        --ar-text-secondary:#475569;
+        --ar-text-muted:    #64748B;
+        --ar-border:        #E2E8F0;
+        --ar-accent:        #4F46E5;
+    }
+
+    html, body, .stApp,
+    div[data-testid="stAppViewContainer"],
+    div[data-testid="stMainView"],
+    section.main {
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
+    }
+
+    /* ── Masquer la sidebar ── */
+    section[data-testid="stSidebar"],
+    div[data-testid="stSidebarContent"],
+    button[data-testid="stSidebarToggle"] {
+        display: none !important;
+    }
+
+    /* ── Masquer les éléments interactifs ── */
+    div.stButton,
+    div[data-testid="stFileUploader"],
+    div[data-testid="stSlider"],
+    div[data-testid="stSelectbox"],
+    div[data-testid="stTextInput"],
+    div[data-testid="stTextArea"],
+    div.stTabs [data-baseweb="tab-list"],
+    div[data-testid="stPopover"],
+    .ar-no-print,
+    .ar-toast,
+    .ar-kbd,
+    script {
+        display: none !important;
+    }
+
+    /* ── Désactiver les animations ── */
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* ── Cartes sans ombres ── */
+    div.stCard,
+    div[data-testid="stExpander"],
+    div[data-testid="stMetric"] {
+        box-shadow: none !important;
+        border: 1px solid #E2E8F0 !important;
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
+        break-inside: avoid;
+    }
+
+    /* ── Tables lisibles ── */
+    div[data-testid="stDataFrame"] thead tr th {
+        background-color: #F8FAFC !important;
+        color: #475569 !important;
+    }
+
+    div[data-testid="stDataFrame"] td {
+        color: #0F172A !important;
+        border-bottom: 1px solid #E2E8F0 !important;
+    }
+
+    /* ── Metrics ── */
+    div[data-testid="stMetric"] label {
+        color: #475569 !important;
+    }
+
+    div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+        color: #0F172A !important;
+    }
+
+    /* ── Pas de coupure dans les KPIs ── */
+    .actua-kpi-card,
+    div[data-testid="stMetric"] {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* ── Liens visibles en impression ── */
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: 0.7em;
+        color: #64748B;
+    }
+
+    /* ── En-t\u00eate de page d'impression ── */
+    @page {
+        margin: 2cm;
+        size: A4 portrait;
+    }
+
+    /* ── Footer page number ── */
+    @page {
+        @bottom-center {
+            content: "ActuaRecette v6.0 \u2014 Page " counter(page) " / " counter(pages);
+            font-size: 8pt;
+            color: #94A3B8;
+        }
+    }
+}

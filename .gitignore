@@ -1,0 +1,38 @@
+# --- Données locales d'ActuaRecette ---
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/uat_runs/
+data/saved_datasets/
+data/archive_runs/
+data/audit_log.json
+temp_uploads/
+
+# --- Environnements virtuels ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Caches Python & Outils de Test ---
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- IDE et Éditeurs de code ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# --- Métadonnées Système ---
+.DS_Store
+Thumbs.db

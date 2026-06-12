@@ -1,0 +1,54 @@
+{
+  "last_updated": "2026-06-05",
+  "approved_by": "Marie Leroux",
+  "revision_frequency": "Annuelle",
+  "lobs": [
+    {
+      "lob_id": "LOB_AUTO_PART",
+      "lob_label": "Automobile Particuliers",
+      "tolerance_pct": 5.0,
+      "warning_pct": 3.0,
+      "critical_pct": 5.0,
+      "materiality_threshold_eur": 500.0,
+      "justification": "Seuil aligné sur la politique de tarification groupe. Validé par le comité actuariel T1 2026.",
+      "approved_by": "Marie Leroux",
+      "approved_at": "2026-03-15"
+    },
+    {
+      "lob_id": "LOB_INCENDIE_RD",
+      "lob_label": "Incendie & Risques Divers",
+      "tolerance_pct": 3.0,
+      "warning_pct": 1.5,
+      "critical_pct": 3.0,
+      "materiality_threshold_eur": 1000.0,
+      "justification": "Seuil plus strict en raison du volume de sinistres et de la volatilité IARD. Revue semestrielle recommandée.",
+      "approved_by": "Marie Leroux",
+      "approved_at": "2026-03-15"
+    },
+    {
+      "lob_id": "LOB_SANTE_IND",
+      "lob_label": "Santé Individuelle",
+      "tolerance_pct": 2.0,
+      "warning_pct": 1.0,
+      "critical_pct": 2.0,
+      "materiality_threshold_eur": 200.0,
+      "justification": "Seuil bas en raison du faible montant unitaire des primes santé. Conforme aux recommandations ACPR 2025.",
+      "approved_by": "Marie Leroux",
+      "approved_at": "2026-03-15"
+    }
+  ],
+  "version_history": [
+    {
+      "version": "1.1",
+      "date": "2026-06-05",
+      "author": "Marie Leroux",
+      "changes": "Ajout des seuils warning/critical par LOB. Le seuil warning déclenche une alerte, le seuil critical déclenche un blocage."
+    },
+    {
+      "version": "1.0",
+      "date": "2026-03-15",
+      "author": "Marie Leroux",
+      "changes": "Création initiale de la politique de matérialité. Seuils définis pour 3 LOBs."
+    }
+  ]
+}

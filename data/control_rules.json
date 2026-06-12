@@ -1,0 +1,72 @@
+[
+  {
+    "rule_id": "CTRL-001",
+    "label": "Cohérence prime référence vs production",
+    "severity": "BLOQUANT",
+    "domain": "Prime",
+    "category": "Réconciliation",
+    "description": "L'écart entre la prime actuarielle de référence et la prime calculée en production doit être inférieur au seuil de tolérance défini pour le LOB.",
+    "regulatory_ref": "Art. 82 Directive 2009/138/CE (Solvabilité II)",
+    "is_mandatory": true,
+    "status": "ACTIVE",
+    "version": "1.0",
+    "approved_by": "Responsable Actuariat",
+    "approved_at": "2026-06-05"
+  },
+  {
+    "rule_id": "CTRL-002",
+    "label": "Seuil plancher de tarification",
+    "severity": "BLOQUANT",
+    "domain": "Prime",
+    "category": "Règle métier",
+    "description": "Toute prime doit respecter le seuil minimal de tarification réglementaire fixé à 150€ par dossier.",
+    "regulatory_ref": "Art. 82 Directive 2009/138/CE (Solvabilité II)",
+    "is_mandatory": true,
+    "status": "ACTIVE",
+    "version": "1.0",
+    "approved_by": "Responsable Actuariat",
+    "approved_at": "2026-06-05"
+  },
+  {
+    "rule_id": "CTRL-003",
+    "label": "Coefficient jeune conducteur",
+    "severity": "ALERTE",
+    "domain": "Contrat",
+    "category": "Règle métier",
+    "description": "Le coefficient de majoration jeune conducteur (<25 ans) doit être de 1.50 conformément à la politique tarifaire interne.",
+    "regulatory_ref": "Politique tarifaire interne v3.2",
+    "is_mandatory": false,
+    "status": "ACTIVE",
+    "version": "1.0",
+    "approved_by": "Responsable Actuariat",
+    "approved_at": "2026-06-05"
+  },
+  {
+    "rule_id": "CTRL-004",
+    "label": "Coefficient puissance véhicule",
+    "severity": "ALERTE",
+    "domain": "Contrat",
+    "category": "Règle métier",
+    "description": "Le facteur multiplicateur de puissance véhicule (>150 ch) doit être de 1.30 selon le barème actuariel validé.",
+    "regulatory_ref": "Politique tarifaire interne v3.2",
+    "is_mandatory": false,
+    "status": "ACTIVE",
+    "version": "1.0",
+    "approved_by": "Responsable Actuariat",
+    "approved_at": "2026-06-05"
+  },
+  {
+    "rule_id": "CTRL-005",
+    "label": "Intégrité des données sources",
+    "severity": "BLOQUANT",
+    "domain": "Transverse",
+    "category": "Qualité données",
+    "description": "Les données sources ne doivent contenir aucune valeur NULL, NaN ou négative aberrante sur les colonnes de primes.",
+    "regulatory_ref": "Art. 82 Directive 2009/138/CE — Qualité des données",
+    "is_mandatory": true,
+    "status": "ACTIVE",
+    "version": "1.0",
+    "approved_by": "Responsable Actuariat",
+    "approved_at": "2026-06-05"
+  }
+]

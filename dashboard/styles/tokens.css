@@ -1,0 +1,517 @@
+/* ==========================================================================
+   ActuaRecette Design System v6.0 — Tokens CSS
+   ==========================================================================
+   Light-first, professionnel, actuariel.
+   Inspiré de Linear, Stripe Dashboard, et Akur8.
+   
+   Police : Inter (UI) + JetBrains Mono (données financières)
+   Mode   : Light par défaut, print override dans print.css
+
+   NOTE ARCHITECTURE CSS :
+   - tokens.css  = variables, resets Streamlit, layout global
+   - components.css = composants ActuaRecette (.actua-kpi-*, .cockpit-*, sidebar nav)
+   - !important est requis pour overrider les styles inline de Streamlit
+     (le framework injecte des styles avec haute spécificité via shadow DOM)
+   - Ne PAS dupliquer de règles entre tokens.css et components.css
+   ========================================================================== */
+
+/* 1. IMPORTS TYPOGRAPHIQUES */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* 2. DESIGN TOKENS — LIGHT MODE (défaut) */
+:root {
+    /* ── Surfaces ── */
+    --ar-bg-app:        #F8FAFC;       /* Fond principal (slate-50) */
+    --ar-bg-surface:    #FFFFFF;       /* Cartes et panneaux (white) */
+    --ar-bg-elevated:   #F1F5F9;       /* Surface élevée (slate-100) */
+    --ar-bg-hover:      #E2E8F0;       /* Hover sur surfaces (slate-200) */
+    --ar-bg-active:     #CBD5E1;       /* Active/pressed (slate-300) */
+    --ar-bg-overlay:    rgba(0, 0, 0, 0.4);
+
+    /* ── Texte ── */
+    --ar-text-primary:  #0F172A;       /* Texte principal (slate-900) */
+    --ar-text-secondary:#475569;       /* Texte secondaire (slate-600) */
+    --ar-text-muted:    #64748B;       /* Texte désactivé (slate-500, WCAG AA ≥4.5:1) */
+    --ar-text-inverse:  #F8FAFC;       /* Texte sur fond sombre */
+
+    /* ── Accent (Indigo) ── */
+    --ar-accent:        #4F46E5;       /* Indigo-600 */
+    --ar-accent-hover:  #4338CA;       /* Indigo-700 */
+    --ar-accent-muted:  rgba(79, 70, 229, 0.10);
+    --ar-accent-text:   #4F46E5;       /* Indigo-600 */
+
+    /* ── Sémantique Actuarielle ── */
+    --ar-conforme:      #059669;       /* Emerald-600 : taux OK */
+    --ar-conforme-bg:   rgba(5, 150, 105, 0.08);
+    --ar-warning:       #D97706;       /* Amber-600 : attention */
+    --ar-warning-bg:    rgba(217, 119, 6, 0.08);
+    --ar-anomalie:      #DC2626;       /* Red-600 : anomalie/critique */
+    --ar-anomalie-bg:   rgba(220, 38, 38, 0.06);
+    --ar-info:          #2563EB;       /* Blue-600 : info */
+    --ar-info-bg:       rgba(37, 99, 235, 0.06);
+
+    /* ── Statuts Campagne ── */
+    --ar-status-brouillon:    #64748B;
+    --ar-status-analyse:      #2563EB;
+    --ar-status-validation:   #D97706;
+    --ar-status-approbation:  #7C3AED;  /* Violet-600 : en attente approbation */
+    --ar-status-certifie:     #059669;
+    --ar-status-reserves:     #EA580C;
+    --ar-status-rejete:       #DC2626;
+
+    /* ── Bordures ── */
+    --ar-border:        #E2E8F0;       /* Slate-200 */
+    --ar-border-focus:  #94A3B8;       /* Slate-400 */
+    --ar-border-accent: #4F46E5;
+
+    /* ── Ombres ── */
+    --ar-shadow-sm:     0 1px 2px rgba(0, 0, 0, 0.05);
+    --ar-shadow-md:     0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --ar-shadow-lg:     0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+
+    /* ── Rayons de bordure ── */
+    --ar-radius-sm:     6px;
+    --ar-radius-md:     10px;
+    --ar-radius-lg:     14px;
+    --ar-radius-xl:     20px;
+    --ar-radius-full:   9999px;
+
+    /* ── Espacement ── */
+    --ar-space-xs:      4px;
+    --ar-space-sm:      8px;
+    --ar-space-md:      16px;
+    --ar-space-lg:      24px;
+    --ar-space-xl:      32px;
+    --ar-space-2xl:     48px;
+
+    /* ── Typographie ── */
+    --ar-font-sans:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --ar-font-mono:     'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --ar-font-size-xs:  0.7rem;
+    --ar-font-size-sm:  0.8rem;
+    --ar-font-size-md:  0.9rem;
+    --ar-font-size-lg:  1.1rem;
+    --ar-font-size-xl:  1.4rem;
+    --ar-font-size-2xl: 1.8rem;
+    --ar-font-size-3xl: 2.4rem;
+
+    /* ── Transitions ── */
+    --ar-transition:    all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --ar-transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 3. APPLICATION DES TOKENS */
+
+/* ── Corps Global ── */
+html, body, [class*="css"] {
+    font-family: var(--ar-font-sans) !important;
+    color: var(--ar-text-primary) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Fond du dashboard ── */
+.stApp,
+div[data-testid="stAppViewContainer"],
+div[data-testid="stMainView"],
+section.main {
+    background-color: var(--ar-bg-app) !important;
+}
+
+/* FIX: En-tête transparent et click-through pour laisser le bouton toggle actif sans masquer le contenu */
+header[data-testid="stHeader"] {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+    z-index: 999999 !important;
+}
+
+/* Réactiver les clics sur les boutons de contrôle de la sidebar (toggle) */
+header[data-testid="stHeader"] button,
+header[data-testid="stHeader"] [data-testid="stSidebarCollapsedControl"],
+header[data-testid="stHeader"] [data-testid="collapsedControl"] {
+    pointer-events: auto !important;
+}
+
+/* FIX: Zéro padding en haut du contenu */
+section.main > div.block-container {
+    padding-top: 0.5rem !important;
+    padding-bottom: 1rem !important;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+}
+
+/* Supprimer les marges internes de Streamlit */
+div[data-testid="stMainView"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+div[data-testid="stAppViewBlockContainer"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.stApp > div[data-testid="stAppViewContainer"] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* FIX: Contenu étendu pleine largeur */
+div[data-testid="stAppViewContainer"] > section.main {
+    width: 100% !important;
+}
+
+div[data-testid="stAppViewContainer"] {
+    width: 100% !important;
+}
+
+/* ── Titres ── */
+h1, h2, h3 {
+    font-family: var(--ar-font-sans) !important;
+    color: var(--ar-text-primary) !important;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+h1 { font-size: var(--ar-font-size-2xl) !important; }
+h2 { font-size: var(--ar-font-size-xl) !important; }
+h3 { font-size: var(--ar-font-size-lg) !important; }
+
+/* ── Nombres financiers (tabular figures) ── */
+.ar-tnum, .financial-number,
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    font-family: var(--ar-font-mono) !important;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: -0.01em;
+}
+
+/* ── Sidebar ── */
+section[data-testid="stSidebar"] {
+    background-color: var(--ar-bg-surface) !important;
+    border-right: 1px solid var(--ar-border) !important;
+    transition: var(--ar-transition-slow) !important;
+}
+
+section[data-testid="stSidebar"][aria-expanded="false"],
+section[data-testid="stSidebar"][data-collapsed="true"] {
+    width: 0px !important;
+    min-width: 0px !important;
+    max-width: 0px !important;
+    border-right: none !important;
+}
+
+/* HIDE the sidebar header (collapse button area) — it creates ~50px dead space */
+section[data-testid="stSidebar"] [data-testid="stSidebarHeader"] {
+    display: none !important;
+    height: 0px !important;
+    min-height: 0px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Kill ALL top padding/margin in sidebar at every nesting level */
+section[data-testid="stSidebar"] > div {
+    padding-top: 0.5rem !important;
+    margin-top: 0px !important;
+}
+section[data-testid="stSidebar"] > div > div,
+section[data-testid="stSidebar"] > div > div > div {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+}
+
+/* Also target stSidebarContent / stSidebarUserContent */
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"],
+section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
+    padding-top: 0.5rem !important;
+    margin-top: 0px !important;
+}
+
+/* Comfortable vertical gap between sidebar elements */
+section[data-testid="stSidebar"] div[data-testid="stVerticalBlock"] {
+    gap: 4px !important;
+}
+
+/* Sidebar element wrappers — allow breathing room */
+section[data-testid="stSidebar"] div.stButton {
+    padding: 1px 0 !important;
+    margin: 0 !important;
+}
+section[data-testid="stSidebar"] div.stMarkdown,
+section[data-testid="stSidebar"] div.element-container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Nav button text alignment — base rule (details in components.css) */
+section[data-testid="stSidebar"] button p,
+section[data-testid="stSidebar"] button span,
+section[data-testid="stSidebar"] button div {
+    text-align: left !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+section[data-testid="stSidebar"] * {
+    color: var(--ar-text-primary) !important;
+}
+
+
+
+section[data-testid="stSidebar"] h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+section[data-testid="stSidebar"] hr {
+    border-color: var(--ar-border) !important;
+    margin: 0.5rem 0 !important;
+}
+
+section[data-testid="stSidebar"][aria-expanded="true"],
+section[data-testid="stSidebar"]:not([aria-expanded="false"]):not([data-collapsed="true"]) {
+    width: 240px !important;
+    min-width: 240px !important;
+}
+
+/* ── Cartes et surfaces ── */
+div.stCard,
+div[data-testid="stExpander"] {
+    background-color: var(--ar-bg-surface) !important;
+    border: 1px solid var(--ar-border) !important;
+    border-radius: var(--ar-radius-lg) !important;
+    padding: var(--ar-space-lg) !important;
+    box-shadow: var(--ar-shadow-sm) !important;
+    transition: var(--ar-transition) !important;
+}
+
+div.stCard:hover,
+div[data-testid="stExpander"]:hover {
+    border-color: var(--ar-border-focus) !important;
+    box-shadow: var(--ar-shadow-md) !important;
+}
+
+/* ── Boutons primaires ── */
+div.stButton > button[data-testid="stBaseButton-primary"] {
+    background-color: var(--ar-accent) !important;
+    color: #FFFFFF !important;
+    border: 1px solid var(--ar-accent) !important;
+    border-radius: var(--ar-radius-sm) !important;
+    font-family: var(--ar-font-sans) !important;
+    font-weight: 500 !important;
+    font-size: var(--ar-font-size-sm) !important;
+    padding: 8px 16px !important;
+    transition: var(--ar-transition) !important;
+    box-shadow: var(--ar-shadow-sm) !important;
+}
+
+div.stButton > button[data-testid="stBaseButton-primary"]:hover {
+    background-color: var(--ar-accent-hover) !important;
+    border-color: var(--ar-accent-hover) !important;
+    box-shadow: var(--ar-shadow-md) !important;
+}
+
+/* ── Boutons secondaires ── */
+div.stButton > button[data-testid="stBaseButton-secondary"] {
+    background-color: var(--ar-bg-elevated) !important;
+    color: var(--ar-text-primary) !important;
+    border: 1px solid var(--ar-border) !important;
+    border-radius: var(--ar-radius-sm) !important;
+    font-family: var(--ar-font-sans) !important;
+    font-weight: 500 !important;
+    font-size: var(--ar-font-size-sm) !important;
+    padding: 8px 16px !important;
+    transition: var(--ar-transition) !important;
+}
+
+div.stButton > button[data-testid="stBaseButton-secondary"]:hover {
+    background-color: var(--ar-bg-hover) !important;
+    border-color: var(--ar-border-focus) !important;
+}
+
+/* ── Tabs ── */
+div.stTabs [data-baseweb="tab-list"] {
+    border-bottom: 1px solid var(--ar-border) !important;
+    background-color: transparent !important;
+}
+
+div.stTabs [data-baseweb="tab"] {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    color: var(--ar-text-secondary) !important;
+    font-weight: 500 !important;
+    font-size: var(--ar-font-size-sm) !important;
+    transition: var(--ar-transition) !important;
+}
+
+div.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    color: var(--ar-accent-text) !important;
+    border-bottom-color: var(--ar-accent) !important;
+    font-weight: 600 !important;
+}
+
+/* ── Tables de donn\u00e9es ── */
+div[data-testid="stDataFrame"] thead tr th {
+    background-color: var(--ar-bg-elevated) !important;
+    color: var(--ar-text-secondary) !important;
+    font-family: var(--ar-font-sans) !important;
+    font-weight: 600 !important;
+    font-size: var(--ar-font-size-xs) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--ar-border) !important;
+}
+
+div[data-testid="stDataFrame"] tbody tr:hover {
+    background-color: var(--ar-bg-hover) !important;
+}
+
+div[data-testid="stDataFrame"] td {
+    font-family: var(--ar-font-sans) !important;
+    font-size: var(--ar-font-size-sm) !important;
+    color: var(--ar-text-primary) !important;
+    border-bottom: 1px solid var(--ar-border) !important;
+}
+
+/* ── Inputs ── */
+div[data-testid="stTextInput"] input,
+div[data-testid="stTextArea"] textarea,
+div[data-testid="stSelectbox"] > div,
+div[data-testid="stMultiSelect"] > div {
+    background-color: var(--ar-bg-elevated) !important;
+    border: 1px solid var(--ar-border) !important;
+    color: var(--ar-text-primary) !important;
+    border-radius: var(--ar-radius-sm) !important;
+    transition: var(--ar-transition) !important;
+}
+
+div[data-testid="stTextInput"] input:focus,
+div[data-testid="stTextArea"] textarea:focus {
+    border-color: var(--ar-accent) !important;
+    box-shadow: 0 0 0 2px var(--ar-accent-muted) !important;
+}
+
+/* ── Metrics ── */
+div[data-testid="stMetric"] {
+    background-color: var(--ar-bg-surface) !important;
+    border: 1px solid var(--ar-border) !important;
+    border-radius: var(--ar-radius-md) !important;
+    padding: var(--ar-space-md) !important;
+}
+
+div[data-testid="stMetric"] label {
+    color: var(--ar-text-secondary) !important;
+    font-size: var(--ar-font-size-xs) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    color: var(--ar-text-primary) !important;
+    font-weight: 800 !important;
+    font-size: var(--ar-font-size-xl) !important;
+}
+
+/* ── Dividers ── */
+hr {
+    border-color: var(--ar-border) !important;
+    opacity: 0.5;
+}
+
+/* ── Skeleton loader animation ── */
+@keyframes ar-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.ar-skeleton {
+    background: linear-gradient(90deg,
+        var(--ar-bg-elevated) 25%,
+        var(--ar-bg-active) 50%,
+        var(--ar-bg-elevated) 75%
+    );
+    background-size: 200% 100%;
+    animation: ar-shimmer 1.5s infinite;
+    border-radius: var(--ar-radius-sm);
+}
+
+/* ── Pulse animation for stepper active step ── */
+@keyframes ar-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--ar-accent-muted); }
+    50% { box-shadow: 0 0 0 6px transparent; }
+}
+
+.ar-pulse {
+    animation: ar-pulse 2s ease-in-out infinite;
+}
+
+/* ── Scrollbar dark ── */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ar-bg-app);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ar-bg-active);
+    border-radius: var(--ar-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ar-border-focus);
+}
+
+/* ── Utilitaires ── */
+.ar-text-conforme { color: var(--ar-conforme) !important; }
+.ar-text-warning  { color: var(--ar-warning) !important; }
+.ar-text-anomalie { color: var(--ar-anomalie) !important; }
+.ar-text-info     { color: var(--ar-info) !important; }
+.ar-text-muted    { color: var(--ar-text-muted) !important; }
+.ar-text-accent   { color: var(--ar-accent-text) !important; }
+
+.ar-bg-conforme   { background-color: var(--ar-conforme-bg) !important; }
+.ar-bg-warning    { background-color: var(--ar-warning-bg) !important; }
+.ar-bg-anomalie   { background-color: var(--ar-anomalie-bg) !important; }
+.ar-bg-info       { background-color: var(--ar-info-bg) !important; }
+
+/* ══ ACCESSIBILITY ══ */
+/* Skip to content link for keyboard users */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 12px 24px;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background: var(--ar-accent);
+    color: white;
+    z-index: 99999;
+    font-weight: 600;
+    border-radius: 0 0 8px 0;
+}
+

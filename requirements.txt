@@ -1,0 +1,24 @@
+# requirements.txt — ActuaRecette v6.0
+# Généré le 2026-06-04
+# Usage: pip install -r requirements.txt
+
+# ── Core Framework ──
+streamlit>=1.58.0,<2.0
+fastapi>=0.136.0,<1.0
+uvicorn>=0.47.0,<1.0
+pydantic>=2.13.0,<3.0
+starlette>=1.0.0,<2.0
+
+# ── Data & Calculs ──
+pandas>=3.0.0,<4.0
+numpy>=2.4.0,<3.0
+duckdb>=1.5.0,<2.0
+
+# ── Visualisation ──
+plotly>=6.7.0,<7.0
+
+# ── Réseau ──
+requests>=2.34.0,<3.0
+
+# ── Export PDF ──
+reportlab>=4.5.0,<5.0

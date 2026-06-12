@@ -1,0 +1,2351 @@
+/* 🎨 ActuaRecette Design System - Version 3.3 Workspace Actuariel Premium
+   =======================================================================
+   Identité visuelle minimaliste de type SaaS B2B inspirée de Linear, Stripe et Akur8.
+   Esthétique 100% plate (flat design), typographie Inter soignée, espacements rigoureux
+   et boutons à relief plat à la manière de Stripe Dashboard.
+*/
+
+/* 1. IMPORTS & POLICES D'ÉLITE */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap');
+
+/* 2. DESIGN SYSTEM TOKENS & VARIABLES */
+:root {
+    --bg-global: #F8FAFC;         /* Fond Slate 50 ultra-doux (Linear/Stripe style) */
+    --bg-card: #FFFFFF;           /* Surface blanche unie (Stripe style) */
+    
+    /* Couleurs de Texte */
+    --color-text-main: #0F172A;   /* Slate-900 : Contraste de lecture optimal */
+    --color-text-muted: #64748B;  /* Slate-500 : Métadonnées et descriptions secondaires */
+    
+    /* Palette Actuarielle Standardisée - Palette Screenshot Yale/Cambridge */
+    --color-primary: #1B4079;     /* Yale Blue (#1B4079) */
+    --color-primary-hover: #14305C;/* Darker Yale Blue */
+    --color-secondary: #4D7C8A;   /* Air Force Blue (#4D7C8A) */
+    --color-conforme: #8FAD88;    /* Sage Green (#8FAD88) */
+    --color-warning: #CBDF90;     /* Mindaro Green (#CBDF90) */
+    --color-anomalie: #7F9C96;    /* Cambridge Blue (#7F9C96) */
+    
+    /* Bordures & Ombres Fines */
+    --border-light: #E2E8F0;      /* Slate-200 : Fine séparation premium (Stripe style) */
+    --border-focus: #CBD5E1;      /* Gray-300 */
+    --shadow-flat: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* 3. CONFIGURATION GLOBALE */
+html, body, [class*="css"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--color-text-main) !important;
+}
+
+/* Fond global du dashboard */
+.stApp,
+div[data-testid="stAppViewContainer"],
+div[data-testid="stMainView"],
+section.main {
+    background-color: var(--bg-global) !important;
+}
+
+/* 4. TYPOGRAPHIE ET FORMATS V3.3 */
+h1, h2, h3, .main-title {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    color: var(--color-text-main);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.main-title {
+    font-size: 32px !important;    /* 32px strict */
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-muted);
+    font-size: 14px !important;    /* 14px strict */
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+/* Précision Financière Monospace */
+.financial-number {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* 5. SURFACES ET CARTES MINIMALISTES */
+div.stCard, div[data-testid="stExpander"], div.css-1r6g82t, .stAlert {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 16px !important;    /* 16px coins arrondis */
+    padding: 24px !important;          /* 24px padding constant */
+    box-shadow: var(--shadow-flat) !important;
+    margin-bottom: 24px;
+    transition: box-shadow 0.15s ease !important;
+}
+
+div.stCard:hover, div[data-testid="stExpander"]:hover {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.02) !important;
+}
+
+/* 6. SIDEBAR SAAS SOLIDEMENT BLANCHE (280PX) */
+section[data-testid="stSidebar"] {
+    background-color: #F8FAFC !important; /* Soft, premium Slate light gray */
+    border-right: 1px solid var(--border-light) !important;
+    padding-top: 0px !important; /* Shrunk padding to mount brand to very top */
+}
+
+section[data-testid="stSidebar"]:not([data-collapsed="true"]) {
+    width: 210px !important;
+}
+
+section[data-testid="stSidebar"] * {
+    color: var(--color-text-main) !important;
+}
+
+/* 7. WIZARD LIFE-CYCLE STEPPER */
+.stepper-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-card);
+    padding: 16px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-flat);
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #F1F5F9;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+    border: 1px solid var(--border-light);
+    transition: all 0.2s ease;
+}
+
+.step-circle.active {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    border-color: var(--color-primary);
+}
+
+.step-circle.completed {
+    background-color: var(--color-conforme);
+    border-color: var(--color-conforme);
+    color: #FFFFFF;
+}
+
+.step-label {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    font-family: 'Inter', sans-serif;
+}
+
+.step-label.active {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.step-label.completed {
+    color: var(--color-text-main);
+}
+
+.step-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--border-light);
+    margin: 0 12px;
+}
+
+.step-line.active {
+    background-color: var(--color-primary);
+}
+
+/* 8. BOUTONS METIERS PLATS ET SOURES (STYLE STRIPE) */
+div.stButton > button {
+    border-radius: 8px !important;     /* 8px rounding strict */
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px !important;         /* 14px text */
+    transition: all 0.15s ease !important;
+    width: 100% !important;
+    min-width: 0px !important;
+    text-transform: none;
+    letter-spacing: normal;
+    white-space: nowrap !important;
+    padding: 8px 16px !important;       /* Clean default padding */
+}
+
+/* Override padding for buttons inside columns to avoid wrapping */
+div[data-testid="column"] div.stButton > button {
+    padding: 8px 6px !important;
+    font-size: 13px !important;
+}
+
+/* Primary buttons style */
+div.stButton > button[data-testid="stBaseButton-primary"] {
+    background-color: var(--color-primary) !important;
+    color: #FFFFFF !important;
+    border: 1px solid var(--color-primary) !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+div.stButton > button[data-testid="stBaseButton-primary"]:hover {
+    background-color: var(--color-primary-hover) !important;
+    border-color: var(--color-primary-hover) !important;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+div.stButton > button[data-testid="stBaseButton-primary"]:active {
+    background-color: #3730A3 !important;
+    box-shadow: none !important;
+}
+
+/* Secondary (outline) buttons style */
+div.stButton > button[data-testid="stBaseButton-secondary"] {
+    background-color: #FFFFFF !important;
+    color: var(--color-text-main) !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: var(--shadow-flat) !important;
+}
+
+div.stButton > button[data-testid="stBaseButton-secondary"]:hover {
+    background-color: #F9FAFB !important;
+    border-color: var(--border-focus) !important;
+    color: #0F172A !important;
+}
+
+div.stButton > button[data-testid="stBaseButton-secondary"]:active {
+    background-color: #F3F4F6 !important;
+}
+
+/* 9. BADGES DE STATUT METIERS STANDARDS V3.3 */
+.badge-status {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: var(--shadow-flat);
+    border: 1px solid transparent;
+}
+
+.status-brouillon {
+    background-color: #F1F5F9;
+    color: #475569;
+    border-color: #E2E8F0;
+}
+
+.status-analyse {
+    background-color: #EDF3F5;
+    color: #4D7C8A;
+    border-color: #D5E3E7;
+}
+
+.status-validation {
+    background-color: #F3F6F5;
+    color: #7F9C96;
+    border-color: #DEE6E4;
+}
+
+.status-certifie {
+    background-color: #F0F5F0;
+    color: #8FAD88;
+    border-color: #DEEAD9;
+}
+
+.status-reserves {
+    background-color: #FAFCEE;
+    color: #7A9137;
+    border-color: #EEF5D6;
+}
+
+.status-rejete {
+    background-color: #E7EFF9;
+    color: #1B4079;
+    border-color: #C6D8EC;
+}
+
+/* 10. INTERFACE TABS HORIZONTAUX STYLE LINEAR */
+div.stTabs [data-baseweb="tab-list"] {
+    border-bottom: 1px solid var(--border-light) !important;
+    gap: 24px !important;
+    background-color: transparent !important;
+}
+
+div.stTabs [data-baseweb="tab"] {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    color: var(--color-text-muted) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    padding: 12px 4px !important;
+    transition: all 0.15s ease !important;
+}
+
+div.stTabs [data-baseweb="tab"]:hover {
+    color: var(--color-text-main) !important;
+}
+
+div.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    color: var(--color-primary) !important;
+    border-bottom: 2px solid var(--color-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* 11. TABLES FINANCIERES PREMIUM STYLE LINEAR */
+div[data-testid="stDataFrame"] table {
+    border-collapse: collapse !important;
+    border: none !important;
+}
+
+div[data-testid="stDataFrame"] thead tr th {
+    background-color: #F8FAFC !important; /* En-tête Gray-50 */
+    color: var(--color-text-muted) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    border-bottom: 1.5px solid var(--border-light) !important;
+}
+
+div[data-testid="stDataFrame"] tbody tr:hover {
+    background-color: #F9FAFB !important; /* Hover Gray-50 doux */
+}
+
+div[data-testid="stDataFrame"] td {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+}
+
+/* 12. OMNIBAR TACTILE EN SIDEBAR */
+.omnibar-input-container {
+    padding: 8px 16px;
+}
+
+.omnibar-input-style {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    background-color: #FAF9F6;
+    transition: all 0.15s ease;
+}
+
+.omnibar-input-style:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.06);
+    outline: none;
+}
+
+/* 13. AUDIT TRAIL TIMELINE A PLAT STYLE GITHUB */
+.timeline-track {
+    position: relative;
+    padding-left: 24px;
+    margin-left: 8px;
+    border-left: 1px solid var(--border-light);
+}
+
+.timeline-node {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.timeline-node:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -30px;
+    top: 4px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #E5E7EB;
+    border: 2px solid var(--bg-card);
+    z-index: 2;
+}
+
+.timeline-dot.completed {
+    background-color: var(--color-conforme);
+}
+
+.timeline-dot.active {
+    background-color: var(--color-primary);
+}
+
+.timeline-dot.warning {
+    background-color: var(--color-warning);
+}
+
+.timeline-dot.rejected {
+    background-color: var(--color-anomalie);
+}
+
+.timeline-time {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.timeline-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.timeline-desc {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 1px;
+}
+
+/* 14. LISTE DENSE A PLAT POUR L'INVESTIGATION METIER */
+.client-list-card {
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #F8FAFC;
+    border: 1px solid var(--border-light);
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.client-list-card:hover {
+    background-color: #F1F5F9;
+    border-color: var(--border-focus);
+}
+
+.client-list-card.selected {
+    background-color: #FFFFFF;
+    border-left: 3px solid var(--color-primary);
+    border-color: var(--border-focus);
+    font-weight: 500;
+}
+
+/* 🎨 PLANMATE PREMIUM REDESIGN TOKENS (v3.4) */
+
+/* Fond grisé doux PlanMate */
+.stApp {
+    background-color: #FFFFFF !important;
+}
+
+/* Cartes blanches fines à micro-relief */
+div.stCard, div[data-testid="stExpander"], div.css-1r6g82t, .stAlert {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E5E7EB !important;
+    border-radius: 12px !important;    /* 12px coins arrondis homogènes */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02) !important;
+    padding: 24px !important;
+}
+
+/* Conteneurs carrés d'icônes thématiques pastels */
+.icon-square-container {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border: 1px solid transparent;
+}
+
+.icon-bg-blue {
+    background-color: #EEF2FF !important;
+    color: #4F46E5 !important;
+    border: 1px solid #C7D2FE !important;
+}
+
+.icon-bg-green {
+    background-color: #ECFDF5 !important;
+    color: #059669 !important;
+    border: 1px solid #A7F3D0 !important;
+}
+
+.icon-bg-orange {
+    background-color: #FFFBEB !important;
+    color: #D97706 !important;
+    border: 1px solid #FDE68A !important;
+}
+
+.icon-bg-purple {
+    background-color: #F5F3FF !important;
+    color: #7C3AED !important;
+    border: 1px solid #DDD6FE !important;
+}
+
+.icon-bg-red {
+    background-color: #FFF1F2 !important;
+    color: #E11D48 !important;
+    border: 1px solid #FECDD3 !important;
+}
+
+/* ==========================================================================
+   🎛️ PREMIUM FINTECH UAT KPI CARDS (STRIPE & RAMP STYLING)
+   ========================================================================== */
+
+.actua-kpi-card {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;      /* Ultra thin slate border */
+    border-radius: 12px !important;            /* Modern rounded corners */
+    padding: 20px !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02) !important; /* Extremely soft shadow */
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    transition: all 0.2s ease-in-out !important;
+    position: relative !important;
+}
+
+/* Elevate card slightly on hover for smooth interactivity */
+.actua-kpi-card:hover {
+    border-color: #CBD5E1 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+.actua-kpi-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: 12px !important;
+    width: 100% !important;
+}
+
+.actua-kpi-action {
+    color: #94A3B8 !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    transition: all 0.15s ease !important;
+    padding: 2px 6px !important;
+    border-radius: 6px !important;
+    user-select: none !important;
+}
+
+.actua-kpi-action:hover {
+    color: #475569 !important;
+    background-color: #F1F5F9 !important;
+}
+
+.actua-kpi-title {
+    font-size: 0.68rem !important;            /* Very clean micro title */
+    font-weight: 700 !important;               /* Extra bold for contrast */
+    color: #64748B !important;                 /* Slate-500 */
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;         /* Professional wide tracking */
+    margin-bottom: 4px !important;
+    display: block !important;
+}
+
+.actua-kpi-value {
+    margin: 4px 0 !important;
+    color: #0F172A !important;                 /* Slate-900 */
+    font-weight: 800 !important;               /* Dense visual anchor */
+    font-size: 1.55rem !important;             /* High readability numeric value */
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.2 !important;
+}
+
+.actua-kpi-trend-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-top: 4px !important;
+}
+
+.actua-kpi-trend-text {
+    font-size: 0.72rem !important;             /* High density subtitle */
+    color: #64748B !important;                 /* Slate-500 */
+    font-weight: 500 !important;
+}
+
+/* Micro bullet trend indicators for semantic cues */
+.actua-kpi-trend-dot {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+}
+
+.trend-dot-green {
+    background-color: #10B981 !important;
+    box-shadow: 0 0 4px rgba(16, 185, 129, 0.4) !important;
+}
+
+.trend-dot-red {
+    background-color: #F43F5E !important;
+    box-shadow: 0 0 4px rgba(244, 63, 94, 0.4) !important;
+}
+
+.trend-dot-blue {
+    background-color: #6366F1 !important;
+    box-shadow: 0 0 4px rgba(99, 102, 241, 0.4) !important;
+}
+
+.trend-dot-orange {
+    background-color: #F59E0B !important;
+    box-shadow: 0 0 4px rgba(245, 158, 11, 0.4) !important;
+}
+
+/* Actuarial Formula Tooltips for KPI Cards */
+.actua-kpi-title-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-bottom: 4px !important;
+}
+
+.actua-kpi-info-trigger {
+    color: #94A3B8 !important;
+    font-size: 0.72rem !important;
+    cursor: help !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    user-select: none !important;
+    transition: color 0.15s ease !important;
+}
+
+.actua-kpi-info-trigger:hover {
+    color: #475569 !important;
+}
+
+/* Tooltip floating box */
+.actua-kpi-info-trigger::after {
+    content: attr(data-tooltip) !important;
+    position: absolute !important;
+    bottom: 140% !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(4px) !important;
+    background-color: #0F172A !important;        /* Deep Slate-900 background */
+    color: #FFFFFF !important;                   /* High contrast white text */
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    font-size: 0.65rem !important;
+    font-weight: 500 !important;
+    text-transform: none !important;             /* Preserve case for math symbols */
+    letter-spacing: normal !important;
+    white-space: nowrap !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 1000000 !important;
+    border: 1px solid #1E293B !important;        /* Slate-800 subtle border */
+}
+
+/* Hover trigger to fade-in and slide up */
+.actua-kpi-info-trigger:hover::after {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* Tooltip triangle arrow pointing down */
+.actua-kpi-info-trigger::before {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 110% !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(4px) !important;
+    border-width: 5px !important;
+    border-style: solid !important;
+    border-color: #0F172A transparent transparent transparent !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 1000000 !important;
+}
+
+.actua-kpi-info-trigger:hover::before {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* Ensure absolute KPI popovers anchor perfectly inside each column! */
+div[data-testid="column"] {
+    position: relative !important;
+}
+
+/* Actuarial Context Dropdown popover container for KPI Cards */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"],
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"],
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"],
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"],
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"],
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] {
+    position: absolute !important;
+    top: 20px !important;       /* Aligned perfectly inside the card padding */
+    right: 20px !important;      /* Aligned perfectly to the right */
+    z-index: 9999 !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Style the native Streamlit popover button inside KPI cards to look like a premium icon button */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;       /* Subtle slate border */
+    border-radius: 8px !important;
+    width: 28px !important;                      /* Very clean and compact */
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #64748B !important;                   /* Slate gray color */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Inject premium horizontal dots "•••" text */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button::before,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button::before,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button::before,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button::before,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button::before,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button::before {
+    content: "•••" !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    color: #64748B !important;
+    line-height: 1 !important;
+    margin-top: -6px !important; /* Center the dots vertically */
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Remove default Streamlit popover label/down arrow if any */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button span,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button span,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button span,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button span,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button span,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button span,
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button p,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button p,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button p,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button p,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button p,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button p,
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button svg,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button svg,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button svg,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button svg,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button svg,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button svg {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Hover and active states */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:hover,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:hover,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:hover,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button:hover,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button:hover,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:active,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:active,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:active,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button:active,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button:active,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button:active {
+    background-color: #F1F5F9 !important;
+}
+
+/* Badges de priorités plats et discrets */
+.tag-priority {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.tag-priority-high {
+    background-color: #FAFCEE !important;
+    color: #7A9137 !important;
+    border: 1px solid #EEF5D6 !important;
+}
+
+.tag-priority-medium {
+    background-color: #EDF3F5 !important;
+    color: #4D7C8A !important;
+    border: 1px solid #D5E3E7 !important;
+}
+
+.tag-priority-low {
+    background-color: #F0F5F0 !important;
+    color: #8FAD88 !important;
+    border: 1px solid #DEEAD9 !important;
+}
+
+/* Timeline Track / Gantt Card Block */
+.gantt-card-block {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.01);
+    transition: all 0.1s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gantt-card-block:hover {
+    border-color: #CBD5E1;
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,0.02);
+}
+
+/* Boutons outlines stylisés type PlanMate */
+.planmate-outline-btn div.stButton > button {
+    background-color: #FFFFFF !important;
+    color: #475569 !important;
+    border: 1px solid #E5E7EB !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.02) !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    min-width: 0px !important;
+}
+
+.planmate-outline-btn div.stButton > button:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+}
+
+/* 🤫 Rendre le Header transparent pour afficher le bouton chevron natif */
+header[data-testid="stHeader"], div[data-testid="stHeader"] {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    pointer-events: none !important; /* Allow clicks to pass through transparent header to the topbar underneath */
+}
+
+/* Ensure child buttons in stHeader (such as the sidebar toggle chevron) remain fully clickable */
+header[data-testid="stHeader"] button,
+div[data-testid="stHeader"] button {
+    pointer-events: auto !important;
+}
+
+/* Masquer spécifiquement le bouton Deploy et les options pour ne garder que le chevron (Élimination complète du texte "Deploy") */
+.stDeployButton,
+[data-testid="stHeaderDeployButton"],
+[data-testid="stDeployButton"],
+div[class*="stDeployButton"],
+button[class*="stDeployButton"],
+span[class*="Deploy"],
+div[class*="stHeaderDeployButton"],
+#MainMenu,
+[data-testid="stHeaderMenuButton"],
+div[data-testid="stHeader"] > div:nth-child(2),
+header[data-testid="stHeader"] > div:nth-child(2) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0px !important;
+    width: 0px !important;
+    overflow: hidden !important;
+}
+
+/* 🚀 Monter le contenu tout en haut de la page (réduire le padding de Streamlit block) */
+.block-container {
+    padding-top: 0px !important;  /* Collé tout en haut de la page */
+}
+
+/* 🧭 SIDEBAR PLANMATE STYLE BUTTONS */
+section[data-testid="stSidebar"] div.stButton > button {
+    background-color: transparent !important;
+    color: #475569 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    padding: 8px 10px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    transition: all 0.1s ease !important;
+}
+
+section[data-testid="stSidebar"] div.stButton > button * {
+    text-align: left !important;
+    justify-content: flex-start !important;
+}
+
+section[data-testid="stSidebar"] div.stButton > button:hover {
+    background-color: #D2E3D0 !important;
+    color: #1B4079 !important;
+}
+
+/* Active State Capsule for Sidebar items and vertical spacing */
+div.sidebar-nav-container {
+    margin-bottom: 2px !important;
+}
+
+div.sidebar-nav-container.active + div.stButton > button,
+div[data-testid="stElementContainer"]:has(.sidebar-nav-container.active) + div[data-testid="stElementContainer"] div.stButton > button {
+    background-color: #D2E3D0 !important;
+    color: #1B4079 !important;
+    font-weight: 600 !important;
+}
+
+/* Réduire drastiquement le gap entre tous les blocs verticaux de la sidebar */
+section[data-testid="stSidebar"] div[data-testid="stVerticalBlock"] {
+    gap: 2px !important;
+}
+section[data-testid="stSidebar"] div[data-testid="stVerticalBlock"] > div {
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}
+
+/* Zero padding for stSidebarContent to mount brand to very top */
+div[data-testid="stSidebarContent"] {
+    padding-top: 0px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+}
+
+div[data-testid="stSidebarUserContent"] {
+    padding-top: 0px !important; /* Shrunk padding to mount brand to very top */
+    margin-top: 0px !important;
+}
+
+
+/* ==========================================================================
+   ⚙️ PREMIUM MINIMALIST UNIFIED SIDEBAR TOGGLE BUTTONS
+   ========================================================================== */
+
+/* Positioning of stSidebarHeader inside the expanded sidebar */
+div[data-testid="stSidebarHeader"] {
+    background-color: transparent !important;
+    position: absolute !important;
+    top: 14px !important;
+    right: 16px !important;
+    left: auto !important;
+    height: auto !important;
+    min-height: 0px !important;
+    padding: 0px !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+/* Position native collapsedControl wrapper just to the right of the 60px rail sidebar */
+div[data-testid="collapsedControl"] {
+    left: 72px !important;       /* Placed beautifully just 12px to the right of the 60px rail sidebar */
+    top: 14px !important;        /* Vertically aligned with "AR" monogram */
+    background: transparent !important;
+    border: none !important;
+    z-index: 1000001 !important; /* Make sure it sits above all topbar components */
+}
+
+/* Hide collapse button inside the sidebar header when the sidebar is collapsed to avoid double chevrons */
+section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarHeader"],
+section[data-testid="stSidebar"][data-collapsed="true"] [data-testid="stSidebarHeader"],
+section[data-testid="stSidebar"][aria-expanded="false"] button[aria-label="Close sidebar"],
+section[data-testid="stSidebar"][data-collapsed="true"] button[aria-label="Close sidebar"],
+section[data-testid="stSidebar"][aria-expanded="false"] button[data-testid="stSidebarCollapseButton"],
+section[data-testid="stSidebar"][data-collapsed="true"] button[data-testid="stSidebarCollapseButton"],
+section[data-testid="stSidebar"][aria-expanded="false"] button[data-testid="stBaseButton-headerNoPadding"],
+section[data-testid="stSidebar"][data-collapsed="true"] button[data-testid="stBaseButton-headerNoPadding"],
+section[data-testid="stSidebar"][aria-expanded="false"] button[data-testid="stBaseButton-header"],
+section[data-testid="stSidebar"][data-collapsed="true"] button[data-testid="stBaseButton-header"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+/* Unified premium styling for both collapse & expand buttons */
+button[data-testid="stSidebarCollapseButton"],
+button[data-testid="stBaseButton-headerNoPadding"],
+button[data-testid="stBaseButton-header"],
+button[aria-label="Close sidebar"],
+button[aria-label="Expand sidebar"],
+div[data-testid="stSidebarHeader"] button,
+div[data-testid="collapsedControl"] button,
+header[data-testid="stHeader"] button,
+div[data-testid="stHeader"] button {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;       /* Subtle slate border */
+    border-radius: 8px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #64748B !important;                   /* Slate gray color */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+}
+
+/* Tactile hovers for premium feeling */
+button[data-testid="stSidebarCollapseButton"]:hover,
+button[data-testid="stBaseButton-headerNoPadding"]:hover,
+button[data-testid="stBaseButton-header"]:hover,
+button[aria-label="Close sidebar"]:hover,
+button[aria-label="Expand sidebar"]:hover,
+div[data-testid="stSidebarHeader"] button:hover,
+div[data-testid="collapsedControl"] button:hover,
+header[data-testid="stHeader"] button:hover,
+div[data-testid="stHeader"] button:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+button[data-testid="stSidebarCollapseButton"]:active,
+button[data-testid="stBaseButton-headerNoPadding"]:active,
+button[data-testid="stBaseButton-header"]:active,
+button[aria-label="Close sidebar"]:active,
+button[aria-label="Expand sidebar"]:active,
+div[data-testid="stSidebarHeader"] button:active,
+div[data-testid="collapsedControl"] button:active,
+header[data-testid="stHeader"] button:active,
+div[data-testid="stHeader"] button:active {
+    background-color: #F1F5F9 !important;
+    box-shadow: none !important;
+}
+
+/* Completely hide all native children (svg, path, spans, text, etc.) to force only our premium icon to show */
+button[data-testid="stSidebarCollapseButton"] *,
+button[data-testid="stBaseButton-headerNoPadding"] *,
+button[data-testid="stBaseButton-header"] *,
+button[aria-label="Close sidebar"] *,
+button[aria-label="Expand sidebar"] *,
+div[data-testid="stSidebarHeader"] button *,
+div[data-testid="collapsedControl"] button *,
+header[data-testid="stHeader"] button *,
+div[data-testid="stHeader"] button * {
+    display: none !important;
+}
+
+/* Inject premium Minimalist Sidebar Toggle (Layout Sidebar) SVG icon */
+button[data-testid="stSidebarCollapseButton"]::before,
+button[data-testid="stBaseButton-headerNoPadding"]::before,
+button[data-testid="stBaseButton-header"]::before,
+button[aria-label="Close sidebar"]::before,
+button[aria-label="Expand sidebar"]::before,
+div[data-testid="stSidebarHeader"] button::before,
+div[data-testid="collapsedControl"] button::before,
+header[data-testid="stHeader"] button::before,
+div[data-testid="stHeader"] button::before {
+    content: "" !important;
+    display: block !important;
+    width: 16px !important;
+    height: 16px !important;
+    background-color: currentColor !important;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>') no-repeat center/contain !important;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>') no-repeat center/contain !important;
+}
+
+
+
+/* 🔔 NOTIFICATION SQUARE BUTTON STYLE - 30px circular size */
+.topbar-icon-btn {
+    box-sizing: border-box !important;
+    border-radius: 50% !important; /* Circular like in Donezo */
+    width: 30px !important;       /* ← était 36px */
+    height: 30px !important;      /* ← était 36px */
+    min-width: 30px !important;
+    max-width: 30px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: #FFFFFF !important;
+    border: none !important; /* Flat design, zero border */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.15s ease !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+}
+
+.topbar-icon-btn:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+}
+
+/* 👤 PROFILE SQUARE BUTTON STYLE */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button {
+    box-sizing: border-box !important;
+    border-radius: 8px !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: #FFFFFF !important;
+    color: #64748B !important;
+    border: 1px solid #E5E7EB !important;
+    font-weight: 700 !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.01) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.15s ease !important;
+    cursor: pointer !important;
+    transform: none !important; /* Absolute zero shift! Flexbox handles it perfectly */
+}
+
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"]:hover,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+}
+
+/* Style the inner container of popover button to completely center contents */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"] > div,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0px !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Hide any text elements inside the popover button */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"] span,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"] p,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button span,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button p {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0px !important;
+    height: 0px !important;
+}
+
+/* Render standard black silhouette of profile avatar inside the popover button */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"] > div::before,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button > div::before {
+    content: "" !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000000"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 18px !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: block !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    transition: all 0.15s ease !important;
+}
+
+/* Hover state for black silhouette avatar inside popover button */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"]:hover > div::before,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button:hover > div::before {
+    transform: scale(1.05) !important;
+}
+
+/* Hide the default chevron arrow inside popover */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"] svg,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] svg {
+    display: none !important;
+}
+
+/* 📐 100% HORIZONTAL & VERTICAL ALIGNMENT FOR TOP-BAR GRIDS (SaaS MODERN MINIMALIST STYLE) */
+
+/* 1. Transparent Header Wrapper */
+div[data-testid="stVerticalBlock"]:has(.topbar-breadcrumbs-row) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 12px !important;
+}
+
+/* 2. Row 1 horizontal column container - Styled as the Grand Rectangle card */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) {
+    background-color: #FFFFFF !important;      /* Clean premium white background */
+    border: 1px solid #E2E8F0 !important;       /* Subtle slate grey border (Stripe style) */
+    border-radius: 16px !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.02) !important;
+    padding: 12px 24px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 20px !important;
+    margin-top: 10px !important; /* Shifted down to clear stHeader click shadow block */
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 64px !important; /* 40px columns height + 24px padding = 64px total height */
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative !important;   /* Relative layout wrapper context for z-index layering */
+    z-index: 999995 !important;      /* Sit cleanly above any transparent header block boundaries */
+}
+
+/* 3. Strip all margin and padding from columns and force 40px height */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"] {
+    display: flex !important;
+    align-items: center !important; /* align-items:center sur toutes les colonnes */
+    justify-content: center !important;
+    height: 40px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Alignments inside specific columns */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:nth-child(1),
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:not(:has(.topbar-anchor-class)),
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:not(:has(.topbar-anchor-class)) {
+    justify-content: flex-start !important;
+    padding-left: 24px !important; /* Keep elegant padding on the left edge for the search bar */
+}
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:nth-child(2),
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:has(.topbar-anchor-class),
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:has(.topbar-anchor-class) {
+    justify-content: flex-end !important;
+    padding-right: 0 !important;
+}
+
+/* 4. Strip margins and paddings on all child wrappers of columns, letting heights calculate dynamically */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"] div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"] div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"] div[data-testid="element-container"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"] div[data-testid="element-container"] {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Specific column child block alignments to prevent centering actions */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:not(:has(.topbar-anchor-class)) div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:not(:has(.topbar-anchor-class)) div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:not(:has(.topbar-anchor-class)) div[data-testid="element-container"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:not(:has(.topbar-anchor-class)) div[data-testid="element-container"] {
+    justify-content: flex-start !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:has(.topbar-anchor-class) div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:has(.topbar-anchor-class) div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:has(.topbar-anchor-class) div[data-testid="element-container"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:has(.topbar-anchor-class) div[data-testid="element-container"] {
+    justify-content: flex-end !important;
+}
+
+/* Force c_actions à occuper tout l'espace restant jusqu'au bord droit */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:nth-child(2) div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:has(.topbar-anchor-class) div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:has(.topbar-anchor-class) div[data-testid="stVerticalBlock"] {
+    width: 100% !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"] div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"] div[data-testid="stVerticalBlock"] {
+    flex-direction: row !important; /* STRICT HORIZONTAL FLOW */
+    gap: 0px !important;
+}
+
+/* 5. Search selectbox sizing and centering - exactly 40px height */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stSelectbox"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+}
+
+/* Style de base de la capsule de recherche (Donezo style) */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stSelectbox"] [data-baseweb="select"] {
+    border-radius: 20px !important; /* Capsule */
+    background-color: #F8FAFC !important; /* Gris clair pastel */
+    border: 1px solid #E2E8F0 !important;
+    font-size: 0.88rem !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02) !important;
+    transition: border-color 0.15s ease, background-color 0.15s ease !important;
+    box-sizing: border-box !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stSelectbox"] [data-baseweb="select"]:hover {
+    border-color: #CBD5E1 !important;
+    background-color: #F1F5F9 !important;
+}
+
+/* Neutraliser totalement les bordures et fonds des wrappers internes pour éviter les superpositions de rectangles */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stSelectbox"] > div,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stSelectbox"] [role="combobox"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stSelectbox"] [data-baseweb="select"] > div {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+/* Hide label elements inside selectbox */
+div[data-testid="stSelectbox"] label {
+    display: none !important;
+    height: 0px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 6. Notification button styling - 30px circular size */
+.topbar-icon-btn {
+    box-sizing: border-box !important;
+    border-radius: 50% !important; /* Circular like in Donezo */
+    width: 30px !important;       /* ← était 36px */
+    height: 30px !important;      /* ← était 36px */
+    min-width: 30px !important;
+    max-width: 30px !important;
+    background-color: #FFFFFF !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.15s ease !important;
+    cursor: pointer;
+    box-shadow: none !important;
+}
+.topbar-icon-btn:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+}
+
+/* Reset markdown default paragraph margins inside columns to align the Bell */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Fix basé sur le vrai DOM inspecté - Unification et neutralisation des wrappers de colonne, laisser les hauteurs dynamiques */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="element-container"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stElementContainer"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stMarkdown"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stMarkdownContainer"] {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Force all child wrappers of actions column to occupy 100% width and justify-content: flex-end */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:has(.topbar-anchor-class) div[data-testid="element-container"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:has(.topbar-anchor-class) div[data-testid="element-container"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:has(.topbar-anchor-class) div[data-testid="stElementContainer"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:has(.topbar-anchor-class) div[data-testid="stElementContainer"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:has(.topbar-anchor-class) div[data-testid="stMarkdown"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:has(.topbar-anchor-class) div[data-testid="stMarkdown"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="column"]:has(.topbar-anchor-class) div[data-testid="stMarkdownContainer"],
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stColumn"]:has(.topbar-anchor-class) div[data-testid="stMarkdownContainer"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+/* 7. Profile popover button styling - matching the Bell icon button exactly */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"] {
+    box-sizing: border-box !important;
+    border-radius: 6px !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    background-color: #FFFFFF !important;
+    color: #475569 !important;
+    border: 1px solid #E2E8F0 !important;
+    font-size: 1.1rem !important; /* Perfect size for the 👤 silhouette */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.15s ease !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"]:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+}
+
+/* Hide the default chevron arrow inside popover */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) button[data-testid="stPopoverInsideButton"] svg {
+    display: none !important;
+}
+
+/* 8. Row 2: Breadcrumbs row styling */
+.topbar-breadcrumbs-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 24px !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+/* Strip default paragraph margins in breadcrumbs */
+div[data-testid="stMarkdown"]:has(.topbar-breadcrumbs-row) p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 9. Horizontal separator */
+.topbar-separator {
+    border: 0 !important;
+    border-top: 1px solid #F1F5F9 !important;
+    margin: 12px 0 20px 0 !important;
+    padding: 0 !important;
+    height: 0px !important;
+}
+
+/* 10. Profile Popover Button (Absolute Overlay for perfect alignment & native flow) */
+
+/* Make columns relative to allow absolute positioning of overlay children */
+div[data-testid="column"],
+div[class*="stColumn"],
+div[data-testid="stHorizontalBlock"] > div,
+div[data-testid="stHorizontalBlock"] div[data-testid="column"],
+div[data-testid="stHorizontalBlock"] div[class*="stColumn"] {
+    position: relative !important;
+}
+
+/* Absolute position the popover container to overlay the profile column completely */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    top: 2px !important;
+    width: 180px !important;
+    height: 36px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    pointer-events: auto !important;
+}
+
+/* Style the popover button itself as a borderless transparent container covering the entire column */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    transition: none !important;
+    color: transparent !important;
+    pointer-events: auto !important;
+    border-radius: 18px !important;
+}
+
+/* On hover, slightly dim for tactile feedback */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button:hover {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border: none !important;
+}
+
+/* Hide any text or svg elements inside the popover button */
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button span,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button p,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button svg,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button::before,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button::after,
+div[data-testid="stHorizontalBlock"]:has(.topbar-anchor-class) div[data-testid="stPopover"] button div::before {
+    display: none !important;
+    visibility: hidden !important;
+    content: none !important;
+    background-image: none !important;
+}
+
+/* 10.5 Profile Capsule Button Visual Styling & Micro-interactions */
+.profile-button-rect {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    transform: translateY(0px) !important;
+}
+
+div[data-testid="column"]:hover .profile-button-rect {
+    background-color: #F1F5F9 !important;
+    border-color: #CBD5E1 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+div[data-testid="column"]:active .profile-button-rect {
+    background-color: #E2E8F0 !important;
+    transform: translateY(0px) !important;
+    box-shadow: none !important;
+}
+
+/* Sidebar title and elements alignment rules */
+section[data-testid="stSidebar"] div[data-testid="element-container"]:has(.sidebar-brand-container),
+section[data-testid="stSidebar"] div[data-testid="element-container"]:has(.sidebar-brand-container) div[data-testid="stMarkdownContainer"] {
+    width: 100% !important;
+}
+
+.sidebar-brand-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    padding-right: 48px !important; /* Force space for the absolute positioned collapse button */
+    margin-bottom: 24px !important; /* Spacing below the brand title */
+    margin-top: 12px !important; /* Controlled top margin for perfect YouTube-style alignment */
+    box-sizing: border-box !important;
+}
+
+.sidebar-brand-text {
+    font-size: 1.25rem !important; /* Shrunk slightly to avoid any visual collision with the sidebar toggle button */
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    letter-spacing: -0.03em !important;
+    text-align: left !important;  /* ← était right */
+}
+
+/* Sidebar monochrome silhouette vector icons matching text color */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    background-color: currentColor; /* Inherits text color dynamically */
+    flex-shrink: 0;
+    transition: background-color 0.1s ease;
+}
+
+/* 1. Cockpit */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-cockpit) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>') no-repeat center/contain;
+}
+
+/* 2. Recettes */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-recettes) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>') no-repeat center/contain;
+}
+
+/* 3. Portefeuille de Stress */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-portefeuille-de-stress) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>') no-repeat center/contain;
+}
+
+/* 4. Règles Métier */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-regles-metier) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="2" x2="6" y1="14" y2="14"/><line x1="10" x2="14" y1="8" y2="8"/><line x1="18" x2="22" y1="16" y2="16"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="2" x2="6" y1="14" y2="14"/><line x1="10" x2="14" y1="8" y2="8"/><line x1="18" x2="22" y1="16" y2="16"/></svg>') no-repeat center/contain;
+}
+
+/* 5. Registre d'Audit */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-registre-d-audit) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>') no-repeat center/contain;
+}
+
+/* 6. Vue Exécutive */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-vue-executive) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>') no-repeat center/contain;
+}
+
+/* 7. Logs Système */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-logs-systeme) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>') no-repeat center/contain;
+}
+
+/* 8. Paramètres */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-parametres) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>') no-repeat center/contain;
+}
+
+/* 9. Support */
+section[data-testid="stSidebar"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-support) + div[data-testid="stElementContainer"] div.stButton > button::before {
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/></svg>') no-repeat center/contain;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/></svg>') no-repeat center/contain;
+}
+
+/* 💎 Premium Minimalist SaaS Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+    background: #CBD5E1 !important;
+    border-radius: 10px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8 !important;
+}
+
+/* 💎 Hide Native Streamlit Branding & Watermarks */
+footer {
+    visibility: hidden !important;
+    height: 0px !important;
+    position: absolute !important;
+}
+#MainMenu {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* ==========================================
+   💎 COLLAPSIBLE RAIL SIDEBAR (ICON-ONLY MODE)
+   ========================================== */
+
+section[data-testid="stSidebar"] {
+    z-index: 1000000 !important; /* Force sidebar and its tooltips to render on top of the main topbar search card */
+}
+
+/* 1. Force the collapsed sidebar and its necessary containers to remain visible at 60px width */
+section[data-testid="stSidebar"][aria-expanded="false"],
+section[data-testid="stSidebar"][data-collapsed="true"] {
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+    transform: translate3d(0, 0, 0) !important; /* Force stay on screen */
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: visible !important;               /* Released to allow tooltips to float outside */
+    visibility: visible !important; /* Force visible */
+}
+
+/* Force container layers inside collapsed sidebar to remain visible and active */
+section[data-testid="stSidebar"][aria-expanded="false"] > div,
+section[data-testid="stSidebar"][data-collapsed="true"] > div,
+section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarContent"],
+section[data-testid="stSidebar"][data-collapsed="true"] [data-testid="stSidebarContent"],
+section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarUserContent"],
+section[data-testid="stSidebar"][data-collapsed="true"] [data-testid="stSidebarUserContent"],
+section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarHeader"],
+section[data-testid="stSidebar"][data-collapsed="true"] [data-testid="stSidebarHeader"],
+section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stVerticalBlock"],
+section[data-testid="stSidebar"][data-collapsed="true"] [data-testid="stVerticalBlock"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    overflow: visible !important;
+}
+
+/* Ensure the collapsed sidebar content block flows vertically */
+section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarContent"],
+section[data-testid="stSidebar"][data-collapsed="true"] [data-testid="stSidebarContent"],
+section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarUserContent"],
+section[data-testid="stSidebar"][data-collapsed="true"] [data-testid="stSidebarUserContent"],
+section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stVerticalBlock"],
+section[data-testid="stSidebar"][data-collapsed="true"] [data-testid="stVerticalBlock"] {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"],
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"],
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton {
+    visibility: visible !important;
+    display: block !important;
+    overflow: visible !important; /* Allow child button tooltips to float outside container boundaries */
+}
+
+/* 2. Adjust stSidebarContent padding when collapsed */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stSidebarContent"],
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stSidebarContent"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* 3. Shift the main content container to the right by 60px when collapsed to prevent overlap */
+div[data-testid="stAppViewContainer"]:has(section[data-testid="stSidebar"][aria-expanded="false"]) div[data-testid="stMainView"],
+div[data-testid="stAppViewContainer"]:has(section[data-testid="stSidebar"][data-collapsed="true"]) div[data-testid="stMainView"],
+div[data-testid="stAppViewContainer"]:has(section[data-testid="stSidebar"][aria-expanded="false"]) section.main,
+div[data-testid="stAppViewContainer"]:has(section[data-testid="stSidebar"][data-collapsed="true"]) section.main,
+div[data-testid="stAppViewContainer"]:has(section[data-testid="stSidebar"][aria-expanded="false"]) .block-container,
+div[data-testid="stAppViewContainer"]:has(section[data-testid="stSidebar"][data-collapsed="true"]) .block-container {
+    margin-left: 60px !important;
+}
+
+/* 4. Smooth transitions on widths, margins and translations for a professional SaaS feel */
+div[data-testid="stAppViewContainer"] div[data-testid="stMainView"],
+div[data-testid="stAppViewContainer"] section.main,
+section[data-testid="stSidebar"] {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 5. Icon-Only Buttons styling in collapsed state */
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton > button {
+    font-size: 0 !important;
+    color: #64748B !important; /* Slate gray color so currentColor can inherit it for the vector icon mask! */
+    background-color: transparent !important;
+    border: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
+    visibility: visible !important;
+    box-shadow: none !important;
+    position: relative !important;   /* Anchor for absolute positioned tooltips (::after) */
+    overflow: visible !important;   /* Let tooltip ::after float outside the button boundaries */
+}
+
+/* Hover style for rail buttons */
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button:hover,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton > button:hover {
+    background-color: #F1F5F9 !important;
+    color: #0F172A !important;
+}
+
+/* Active style for rail buttons */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.active) + div[data-testid="stElementContainer"] div.stButton > button,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.active) + div[data-testid="stElementContainer"] div.stButton > button {
+    background-color: #E2E8F0 !important;
+    color: #0F172A !important;
+    border-radius: 8px !important;
+}
+
+/* Center and slightly scale the vector icon in the middle of the 60px rail button */
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button::before,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton > button::before {
+    content: "" !important;      /* Double security: pseudo-element MUST have content to exist */
+    margin-right: 0 !important;   /* Remove right spacing */
+    width: 18px !important;       /* Slightly larger for Rail focus */
+    height: 18px !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Hide all text containers inside the button to prevent them from showing or affecting space */
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button p,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton > button p,
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button span,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton > button span,
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button div,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton > button div {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* 6. Collapse brand header "ActuaRecette" into monogram "AR" */
+section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-brand-text,
+section[data-testid="stSidebar"][data-collapsed="true"] .sidebar-brand-text {
+    display: none !important;
+}
+section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-brand-container,
+section[data-testid="stSidebar"][data-collapsed="true"] .sidebar-brand-container {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-top: 16px !important;
+}
+section[data-testid="stSidebar"][aria-expanded="false"] .sidebar-brand-container::before,
+section[data-testid="stSidebar"][data-collapsed="true"] .sidebar-brand-container::before {
+    content: "AR" !important;
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    letter-spacing: -0.03em !important;
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Collapse connection indicators into simple centered dynamic dots under the brand monogram */
+section[data-testid="stSidebar"][aria-expanded="false"] .status-indicator-badge,
+section[data-testid="stSidebar"][data-collapsed="true"] .status-indicator-badge {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: transparent !important; /* Supprime le fond de la capsule */
+    border: none !important;                   /* Supprime la bordure de la capsule */
+    padding: 0 !important;
+    margin: 16px auto 8px auto !important;     /* Respiration verticale centrée */
+    width: 100% !important;
+    max-width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Hide the text label in collapsed mode */
+section[data-testid="stSidebar"][aria-expanded="false"] .status-indicator-badge span:nth-child(2),
+section[data-testid="stSidebar"][data-collapsed="true"] .status-indicator-badge span:nth-child(2) {
+    display: none !important;
+}
+
+/* Scale and center the status dot inside the 60px rail */
+section[data-testid="stSidebar"][aria-expanded="false"] .status-indicator-badge span:nth-child(1),
+section[data-testid="stSidebar"][data-collapsed="true"] .status-indicator-badge span:nth-child(1) {
+    width: 8px !important;                     /* Légèrement agrandi pour le focus rail */
+    height: 8px !important;
+    margin: 0 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Breathing animation keyframes */
+@keyframes statusPulseLocal {
+    0% {
+        box-shadow: 0 0 0 0px rgba(217, 119, 6, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(217, 119, 6, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0px rgba(217, 119, 6, 0);
+    }
+}
+
+@keyframes statusPulseApi {
+    0% {
+        box-shadow: 0 0 0 0px rgba(16, 185, 129, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0px rgba(16, 185, 129, 0);
+    }
+}
+
+/* Halo orange avec animation respiratoire pour le mode local */
+section[data-testid="stSidebar"][aria-expanded="false"] .status-indicator-badge.status-local span:nth-child(1),
+section[data-testid="stSidebar"][data-collapsed="true"] .status-indicator-badge.status-local span:nth-child(1) {
+    animation: statusPulseLocal 2s infinite ease-in-out !important;
+}
+
+/* Halo vert avec animation respiratoire pour le mode API */
+section[data-testid="stSidebar"][aria-expanded="false"] .status-indicator-badge.status-api span:nth-child(1),
+section[data-testid="stSidebar"][data-collapsed="true"] .status-indicator-badge.status-api span:nth-child(1) {
+    animation: statusPulseApi 2s infinite ease-in-out !important;
+}
+
+/* 7. Transform section text headers ("Menu" and "Autre") into elegant horizontal divider lines */
+section[data-testid="stSidebar"][aria-expanded="false"] p[style*='font-size: 0.65rem'],
+section[data-testid="stSidebar"][data-collapsed="true"] p[style*='font-size: 0.65rem'] {
+    font-size: 0px !important;
+    height: 1px !important;
+    background-color: #E2E8F0 !important;
+    margin: 20px 12px !important;
+    padding: 0 !important;
+    color: transparent !important;
+    overflow: hidden !important;
+}
+
+/* Hide any remaining helper paragraph tags */
+section[data-testid="stSidebar"][aria-expanded="false"] p,
+section[data-testid="stSidebar"][data-collapsed="true"] p {
+    font-size: 0px !important;
+    height: 0px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: hidden !important;
+}
+
+/* ==========================================================================
+   🧭 PREMIUM PURE CSS TOOLTIPS FOR COLLAPSED SIDEBAR BUTTONS
+   ========================================================================== */
+
+/* Base styling for pure CSS tooltips on rail buttons */
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton > button::after {
+    display: block !important;
+    position: absolute !important;
+    left: 65px !important;                     /* Positionnement juste à droite du rail de 60px */
+    background-color: #0F172A !important;      /* Noir graphite profond SaaS */
+    color: #FFFFFF !important;                 /* Texte blanc pur */
+    padding: 6px 10px !important;              /* Respiration interne de l'infobulle */
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    font-family: 'Inter', sans-serif !important;
+    border-radius: 6px !important;             /* Bords légèrement arrondis */
+    white-space: nowrap !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    opacity: 0 !important;                     /* Invisible par défaut */
+    pointer-events: none !important;           /* Évite d'interférer avec le clic */
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 99999 !important;
+    transform: translateX(-6px) !important;    /* Position de départ pour l'effet de glissement */
+}
+
+/* Hover trigger to show the tooltip */
+section[data-testid="stSidebar"][aria-expanded="false"] div.stButton > button:hover::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div.stButton > button:hover::after {
+    opacity: 1 !important;
+    transform: translateX(0px) !important;     /* Glisse de 6px vers la droite */
+}
+
+/* Tooltip content mapping dynamically by dynamic slugs */
+
+/* 1. Cockpit */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-cockpit) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-cockpit) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Cockpit" !important;
+}
+
+/* 2. Recettes */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-recettes) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-recettes) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Recettes" !important;
+}
+
+/* 3. Portefeuille de Stress */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-portefeuille-de-stress) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-portefeuille-de-stress) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Portefeuille de Stress" !important;
+}
+
+/* 4. Règles Métier */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-regles-metier) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-regles-metier) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Règles Métier" !important;
+}
+
+/* 5. Registre d'Audit */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-registre-d-audit) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-registre-d-audit) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Registre d'Audit" !important;
+}
+
+/* 6. Vue Exécutive */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-vue-executive) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-vue-executive) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Vue Exécutive" !important;
+}
+
+/* 7. Logs Système */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-logs-systeme) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-logs-systeme) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Logs Système" !important;
+}
+
+/* 8. Paramètres */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-parametres) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-parametres) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Paramètres" !important;
+}
+
+/* 9. Support */
+section[data-testid="stSidebar"][aria-expanded="false"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-support) + div[data-testid="stElementContainer"] div.stButton > button::after,
+section[data-testid="stSidebar"][data-collapsed="true"] div[data-testid="stElementContainer"]:has(.sidebar-nav-container.nav-support) + div[data-testid="stElementContainer"] div.stButton > button::after {
+    content: "Support" !important;
+}
+
+
+/* ==========================================================================
+   📶 DYNAMIC HOVER TOOLTIPS FOR CONNECTION STATUS BADGES (OPTION 1)
+   ========================================================================== */
+
+/* Base container adjustment */
+.status-indicator-badge {
+    position: relative !important;
+    cursor: help !important;
+}
+
+/* Tooltip base styling - Compact premium SaaS style */
+.status-indicator-badge::after {
+    display: block !important;
+    position: absolute !important;
+    background-color: #0F172A !important;      /* Noir graphite profond SaaS */
+    color: #FFFFFF !important;                 /* Texte blanc pur */
+    padding: 6px 10px !important;              /* Respiration interne de l'infobulle */
+    font-size: 0.65rem !important;
+    line-height: 1.35 !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif !important;
+    border-radius: 6px !important;             /* Bords légèrement arrondis */
+    white-space: normal !important;            /* Allow text wrapping */
+    width: 200px !important;                   /* Narrower, high-end compact width */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    opacity: 0 !important;                     /* Invisible par défaut */
+    pointer-events: none !important;           /* Évite d'interférer avec le clic */
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 999999 !important;
+    
+    /* Default position for Expanded Sidebar (Under the capsule, aligned right to stay inside sidebar boundaries) */
+    right: 8px !important;
+    left: auto !important;
+    top: 100% !important;
+    transform: translateY(6px) !important;
+    width: 180px !important;
+}
+
+/* Tooltip content mapping dynamically by connection state - Sleek Micro-Copy */
+.status-indicator-badge.status-local::after {
+    content: "⚠️ Mode Hors-ligne : Serveur API injoignable. Vos recettes, audits et signatures sont sauvegardés localement en sécurité sur votre poste." !important;
+}
+
+.status-indicator-badge.status-api::after {
+    content: "Synchronisé (En ligne) : Vos signatures, recettes et audits sont sauvegardés en temps réel sur la base centrale." !important;
+}
+
+/* Hover trigger to show the tooltip */
+.status-indicator-badge:hover::after {
+    opacity: 1 !important;
+}
+
+/* Position adjustment in Collapsed Sidebar to float elegantly to the right without collision */
+section[data-testid="stSidebar"][aria-expanded="false"] .status-indicator-badge::after,
+section[data-testid="stSidebar"][data-collapsed="true"] .status-indicator-badge::after {
+    display: block !important;
+    left: 65px !important;                     /* Float just to the right of the 60px rail */
+    top: 50% !important;                       /* Center vertically relative to the badge */
+    transform: translateY(-50%) translateX(-6px) !important; /* Slide-in starting position */
+    width: 240px !important;                   /* High-end compact width for detailed text */
+    white-space: normal !important;            /* Allow wrapping */
+}
+
+/* Hover slide-in transition for the connection tooltip in collapsed mode */
+section[data-testid="stSidebar"][aria-expanded="false"] .status-indicator-badge:hover::after,
+section[data-testid="stSidebar"][data-collapsed="true"] .status-indicator-badge:hover::after {
+    opacity: 1 !important;
+    transform: translateY(-50%) translateX(0px) !important; /* Smooth slide-in to the right */
+}
+
+
+/* ==========================================================================
+   🎨 PHASE 2 : SI COCKPIT REFONTE GRAPHIQUE PREMIUM (SAGE/FINTECH CIBLE)
+   ========================================================================== */
+
+/* 1. Bandeau de filtrage par Période à effet verre dépoli (Frosted Glassmorphism) */
+.frosted-period-selector {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    border-radius: 12px !important;
+    padding: 16px 20px !important;
+    margin-bottom: 24px !important;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.02) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+}
+
+.period-carousel-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    padding-bottom: 4px !important;
+}
+
+.period-pill {
+    padding: 6px 14px !important;
+    border-radius: 8px !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid transparent !important;
+    white-space: nowrap !important;
+    user-select: none !important;
+}
+
+.period-pill.active {
+    background-color: var(--color-primary) !important;
+    color: #FFFFFF !important;
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 2px 6px rgba(27, 64, 121, 0.15) !important;
+}
+
+.period-pill.inactive {
+    background-color: #F1F5F9 !important;
+    color: #64748B !important;
+    border-color: #E2E8F0 !important;
+}
+
+.period-pill.inactive:hover {
+    background-color: #E2E8F0 !important;
+    color: #0F172A !important;
+}
+
+/* 2. Grille tabulaire haute-densité "Grand Livre de Recette" (Balance Comptable) */
+.grand-livre-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background-color: #FFFFFF !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+.grand-livre-th {
+    background-color: #F8FAFC !important;
+    color: #475569 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    padding: 14px 18px !important;
+    border-bottom: 2px solid #E2E8F0 !important;
+    text-align: left !important;
+}
+
+.grand-livre-row {
+    border-bottom: 1px solid #F1F5F9 !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+}
+
+/* Hover-Reveal de mise en valeur */
+.grand-livre-row:hover {
+    background-color: #FAFBFD !important;
+    box-shadow: inset 4px 0 0 var(--color-primary) !important;
+}
+
+.grand-livre-td {
+    padding: 12px 18px !important;
+    font-size: 13px !important;
+    color: #0F172A !important;
+    vertical-align: middle !important;
+}
+
+/* Roboto Mono pour l'alignement vertical parfait des chiffres financiers */
+.grand-livre-amount {
+    font-family: 'Roboto Mono', monospace !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-align: right !important;
+}
+
+.grand-livre-opt-btn {
+    opacity: 0.15;
+    font-size: 1.1rem !important;
+    color: #64748B !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+.grand-livre-row:hover .grand-livre-opt-btn {
+    opacity: 1 !important;
+    color: var(--color-primary) !important;
+}
+
+/* 3. Lettrage des Runs en accordéon (Sub-Ledger) avec Lazy Loading */
+.subledger-accordion-box {
+    background-color: #F8FAFC !important;
+    border-top: 1px solid #E2E8F0 !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 18px 24px !important;
+    animation: slideDownSubledger 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes slideDownSubledger {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.subledger-section-title {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #64748B !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.07em !important;
+    margin-bottom: 12px !important;
+}
+
+/* 4. Slide-Over Drawer tactile coulissant (Tiroir d'investigation) */
+.slide-over-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    right: -460px !important;
+    width: 440px !important;
+    height: 100% !important;
+    background-color: #FFFFFF !important;
+    border-left: 1px solid #E2E8F0 !important;
+    box-shadow: -12px 0 35px rgba(0, 0, 0, 0.05) !important;
+    z-index: 999999 !important;
+    transition: right 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    padding: 30px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.slide-over-drawer.open {
+    right: 0 !important;
+}
+
+.drawer-top-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    padding-bottom: 14px !important;
+    margin-bottom: 20px !important;
+}
+
+.drawer-main-title {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+}
+
+.drawer-close-btn {
+    cursor: pointer !important;
+    color: #94A3B8 !important;
+    font-size: 22px !important;
+    transition: color 0.15s ease !important;
+    line-height: 1 !important;
+}
+
+.drawer-close-btn:hover {
+    color: #0F172A !important;
+}
+
+
+
+
+

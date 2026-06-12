@@ -1,0 +1,101 @@
+ID_CLIENT,age_conducteur,experience_permis,type_vehicule,puissance_vehicule,zone_geographique,usage,kilometrage_annuel,bonus_malus,PRIME_DSI
+C001,52,34,Citadine,244,Urbain Dense,Prive,28000,1.25,487.5
+C002,42,24,Berline,237,Rural,Prive-Trajet,8000,1.5,487.5
+C003,54,36,Citadine,210,Urbain Dense,Prive-Trajet,29000,0.68,265.2
+C004,67,49,Citadine,218,Urbain Dense,Prive,25000,0.68,265.2
+C005,41,23,SUV,101,Rural,Professionnel,33000,0.95,237.5
+C006,41,23,Berline,158,Urbain Dense,Prive-Trajet,29000,0.95,370.5
+C007,68,50,Sportive,66,Rural,Prive-Trajet,8000,1.0,250.0
+C008,56,38,Sportive,203,Urbain Standard,Prive-Trajet,14000,0.76,247.0
+C009,37,19,SUV,149,Urbain Dense,Prive,9000,1.25,375.0
+C010,53,35,SUV,171,Urbain Standard,Prive,13000,0.5,162.51
+C011,38,20,Berline,119,Rural,Prive,28000,1.0,250.0
+C012,38,20,Sportive,172,Urbain Standard,Prive,7000,0.85,276.25
+C013,48,30,Sportive,61,Urbain Standard,Prive,21000,0.5,125.0
+C014,18,0,Sportive,188,Rural,Professionnel,7000,1.1,536.25
+C015,19,1,Citadine,107,Urbain Standard,Professionnel,20000,1.5,562.5
+C016,36,18,Sportive,199,Urbain Standard,Prive,8000,0.85,276.25
+C017,29,11,Citadine,96,Rural,Prive-Trajet,22000,0.85,212.5
+C018,49,31,Berline,219,Urbain Standard,Prive,21000,1.0,325.0
+C019,31,13,Citadine,68,Rural,Professionnel,11000,0.76,190.0
+C020,23,5,Berline,158,Urbain Standard,Professionnel,28000,1.0,487.52
+C021,66,48,Sportive,206,Rural,Prive-Trajet,27000,1.1,357.5
+C022,41,23,Sportive,107,Rural,Professionnel,34000,0.76,190.0
+C023,46,28,Berline,190,Urbain Standard,Prive,9000,1.1,357.5
+C024,23,5,SUV,207,Urbain Standard,Prive-Trajet,16000,0.76,370.5
+C025,36,18,Berline,211,Urbain Standard,Prive,21000,0.68,221.0
+C026,46,28,SUV,113,Urbain Dense,Prive,27000,0.85,255.0
+C027,27,9,Citadine,179,Urbain Dense,Prive-Trajet,17000,1.25,487.5
+C028,50,32,Citadine,220,Urbain Dense,Prive,27000,1.5,585.0
+C029,35,17,Citadine,211,Rural,Professionnel,29000,1.1,357.5
+C030,40,22,Sportive,175,Urbain Standard,Prive,7000,0.5,162.53
+C031,35,17,Citadine,134,Rural,Prive-Trajet,13000,0.76,190.0
+C032,72,54,SUV,172,Urbain Dense,Prive-Trajet,34000,1.5,585.0
+C033,44,26,Citadine,223,Urbain Standard,Prive-Trajet,21000,0.5,162.5
+C034,29,11,Berline,225,Rural,Prive,21000,1.5,487.5
+C035,57,39,Berline,163,Urbain Standard,Prive-Trajet,34000,1.25,406.25
+C036,26,8,Sportive,143,Rural,Prive-Trajet,24000,0.5,125.0
+C037,48,30,Berline,171,Urbain Standard,Prive,20000,1.0,325.0
+C038,18,0,SUV,158,Urbain Dense,Professionnel,29000,0.95,555.75
+C039,25,7,Citadine,212,Urbain Dense,Prive,26000,1.0,390.0
+C040,47,29,Sportive,152,Urbain Standard,Prive-Trajet,17000,0.95,308.76
+C041,56,38,Citadine,205,Rural,Prive-Trajet,31000,1.0,325.0
+C042,47,29,Citadine,187,Urbain Dense,Prive,23000,0.95,370.5
+C043,43,25,SUV,169,Urbain Dense,Professionnel,21000,0.95,370.5
+C044,40,22,Berline,141,Urbain Dense,Prive-Trajet,8000,0.85,255.0
+C045,22,4,Berline,113,Urbain Standard,Prive-Trajet,16000,0.76,285.0
+C046,34,16,Citadine,222,Urbain Standard,Prive-Trajet,33000,0.76,247.0
+C047,38,20,Sportive,248,Rural,Prive,13000,0.85,276.25
+C048,60,42,Berline,228,Rural,Prive-Trajet,23000,1.5,487.5
+C049,50,32,Sportive,220,Rural,Professionnel,16000,0.68,221.0
+C050,18,0,Berline,127,Urbain Standard,Prive-Trajet,13000,1.5,562.52
+C051,49,31,Sportive,92,Urbain Standard,Prive-Trajet,11000,0.5,125.0
+C052,39,21,SUV,201,Rural,Professionnel,32000,0.5,162.5
+C053,34,16,Sportive,80,Rural,Prive-Trajet,18000,0.95,237.5
+C054,54,36,SUV,107,Urbain Standard,Prive,35000,1.0,250.0
+C055,60,42,SUV,207,Rural,Prive,24000,1.0,325.0
+C056,58,40,Sportive,187,Urbain Dense,Prive,23000,0.76,296.4
+C057,32,14,SUV,195,Urbain Standard,Professionnel,30000,1.1,357.5
+C058,40,22,Citadine,194,Rural,Prive-Trajet,19000,1.5,487.5
+C059,49,31,SUV,204,Urbain Standard,Prive,20000,1.25,406.25
+C060,59,41,Berline,187,Urbain Dense,Professionnel,25000,1.0,390.0
+C061,37,19,Sportive,92,Urbain Standard,Prive-Trajet,9000,1.25,312.5
+C062,42,24,Citadine,235,Urbain Standard,Professionnel,7000,0.95,308.75
+C063,28,10,Sportive,246,Urbain Standard,Prive,16000,1.25,406.25
+C064,27,9,Berline,174,Urbain Standard,Prive,29000,0.85,276.25
+C065,57,39,Berline,178,Urbain Dense,Prive,24000,1.25,487.5
+C066,65,47,Berline,81,Urbain Standard,Professionnel,31000,0.68,170.0
+C067,43,25,SUV,217,Urbain Standard,Professionnel,25000,0.95,308.75
+C068,60,42,SUV,97,Rural,Prive,8000,1.5,375.0
+C069,50,32,Sportive,168,Urbain Standard,Professionnel,25000,0.85,276.25
+C070,20,2,Sportive,110,Rural,Prive,27000,1.0,393.5
+C071,50,32,Citadine,241,Urbain Dense,Prive,20000,0.5,195.0
+C072,68,50,Citadine,67,Urbain Dense,Prive-Trajet,29000,1.5,450.0
+C073,44,26,Sportive,86,Urbain Dense,Professionnel,11000,0.5,150.0
+C074,68,50,SUV,86,Urbain Dense,Prive,17000,0.95,285.0
+C075,18,0,Berline,80,Rural,Prive,25000,0.85,318.75
+C076,57,39,Sportive,89,Urbain Standard,Professionnel,14000,0.76,190.0
+C077,46,28,Citadine,156,Urbain Dense,Prive-Trajet,30000,1.0,390.0
+C078,40,22,SUV,87,Urbain Standard,Prive-Trajet,11000,0.68,170.0
+C079,46,28,Sportive,170,Rural,Prive,18000,0.76,247.0
+C080,18,0,Sportive,120,Rural,Professionnel,35000,0.5,162.5
+C081,41,23,SUV,107,Rural,Prive-Trajet,30000,1.5,375.0
+C082,50,32,Sportive,206,Urbain Dense,Professionnel,9000,0.68,265.2
+C083,67,49,SUV,63,Urbain Standard,Professionnel,7000,1.25,312.5
+C084,37,19,Berline,94,Urbain Standard,Prive,27000,0.68,170.0
+C085,32,14,SUV,108,Urbain Standard,Prive-Trajet,33000,0.95,237.5
+C086,37,19,SUV,76,Rural,Prive,15000,1.1,275.0
+C087,58,40,SUV,231,Urbain Dense,Prive-Trajet,15000,1.25,487.5
+C088,49,31,Sportive,217,Rural,Prive-Trajet,22000,0.5,162.5
+C089,37,19,Sportive,105,Rural,Prive-Trajet,19000,1.0,250.0
+C090,52,34,SUV,180,Urbain Standard,Prive-Trajet,16000,0.5,207.5
+C091,46,28,Sportive,65,Rural,Prive-Trajet,13000,0.68,170.0
+C092,59,41,Citadine,158,Urbain Standard,Professionnel,14000,0.5,162.5
+C093,34,16,Citadine,183,Urbain Dense,Prive,30000,0.95,370.5
+C094,40,22,Sportive,96,Urbain Standard,Professionnel,16000,1.5,375.0
+C095,39,21,Sportive,83,Urbain Dense,Prive-Trajet,21000,1.0,300.0
+C096,23,5,SUV,152,Urbain Standard,Prive,33000,0.5,243.75
+C097,49,31,Berline,105,Rural,Prive-Trajet,10000,0.5,125.0
+C098,48,30,Sportive,240,Rural,Prive,11000,0.68,221.0
+C099,non_renseigne,27,Citadine,154,Urbain Dense,Professionnel,18000,1.5,585.0
+C100,41,23,SUV,158,Urbain Dense,Prive,17000,0.76,296.4

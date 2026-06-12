@@ -1,0 +1,1175 @@
+/* ==========================================================================
+   ActuaRecette v6.0 — Component Styles
+   ==========================================================================
+   Styles CSS pour les composants Python (kpi_card, stepper, badges, etc.)
+   Utilise les tokens définis dans tokens.css.
+   ========================================================================== */
+
+/* ==========================================================================
+   TOP BAR — Command Center (Stripe/Linear-inspired)
+   ========================================================================== */
+.ar-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 6px 4px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--ar-border);
+    background-color: var(--ar-bg-app);
+    font-family: var(--ar-font-sans);
+}
+
+/* --- Left zone: breadcrumb + period --- */
+.ar-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--ar-font-size-sm);
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.ar-topbar-period {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--ar-accent);
+    background-color: var(--ar-accent-muted);
+    padding: 2px 10px;
+    border-radius: var(--ar-radius-full);
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+/* --- Center zone: Omnibar --- */
+.ar-topbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    min-width: 180px;
+}
+
+.ar-topbar-omnibar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 6px 14px;
+    background-color: var(--ar-bg-elevated);
+    border: 1px solid var(--ar-border);
+    border-radius: var(--ar-radius-full);
+    cursor: pointer;
+    transition: var(--ar-transition);
+}
+
+.ar-topbar-omnibar:hover {
+    border-color: var(--ar-border-focus);
+    background-color: var(--ar-bg-surface);
+    box-shadow: var(--ar-shadow-sm);
+}
+
+.ar-topbar-omnibar-text {
+    font-size: 0.78rem;
+    color: var(--ar-text-muted);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ar-topbar-omnibar-shortcut {
+    font-size: 0.6rem;
+    font-weight: 600;
+    font-family: var(--ar-font-mono);
+    color: var(--ar-text-muted);
+    background-color: var(--ar-bg-app);
+    border: 1px solid var(--ar-border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    white-space: nowrap;
+}
+
+/* --- Right zone: bell + status + avatar --- */
+.ar-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}
+
+.ar-topbar-bell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--ar-radius-sm);
+    color: var(--ar-text-secondary);
+    cursor: pointer;
+    transition: var(--ar-transition);
+}
+
+.ar-topbar-bell:hover {
+    background-color: var(--ar-bg-elevated);
+    color: var(--ar-text-primary);
+}
+
+.ar-topbar-bell-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: var(--ar-radius-full);
+    background-color: var(--ar-anomalie);
+    color: #FFFFFF;
+    font-size: 0.55rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    line-height: 1;
+    animation: ar-badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ar-badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.ar-topbar-status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ar-topbar-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--ar-conforme);
+    box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.15);
+    animation: ar-status-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ar-status-pulse {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.15); }
+    50% { box-shadow: 0 0 0 5px rgba(5, 150, 105, 0.05); }
+}
+
+.ar-topbar-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--ar-transition);
+    flex-shrink: 0;
+}
+
+.ar-topbar-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: var(--ar-shadow-sm);
+}
+
+/* ==========================================================================
+   PERIOD BAR — Compact Selectbox Dropdowns
+   ========================================================================== */
+
+/* Selectbox labels — smaller, uppercase */
+.st-key-pb_select_year label,
+.st-key-pb_select_quarter label,
+.st-key-pb_select_month label {
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--ar-text-muted) !important;
+    margin-bottom: 2px !important;
+}
+
+/* Selectbox input — compact */
+.st-key-pb_select_year [data-testid="stSelectbox"],
+.st-key-pb_select_quarter [data-testid="stSelectbox"],
+.st-key-pb_select_month [data-testid="stSelectbox"] {
+    min-height: unset !important;
+}
+
+.st-key-pb_select_year [data-baseweb="select"] > div,
+.st-key-pb_select_quarter [data-baseweb="select"] > div,
+.st-key-pb_select_month [data-baseweb="select"] > div {
+    font-size: 0.8rem !important;
+    padding: 4px 8px !important;
+    min-height: 32px !important;
+    border-radius: var(--ar-radius-sm) !important;
+    border-color: var(--ar-border) !important;
+}
+
+.st-key-pb_select_year [data-baseweb="select"] > div:hover,
+.st-key-pb_select_quarter [data-baseweb="select"] > div:hover,
+.st-key-pb_select_month [data-baseweb="select"] > div:hover {
+    border-color: var(--ar-accent) !important;
+}
+
+.st-key-pb_select_year [data-baseweb="select"] > div:focus-within,
+.st-key-pb_select_quarter [data-baseweb="select"] > div:focus-within,
+.st-key-pb_select_month [data-baseweb="select"] > div:focus-within {
+    border-color: var(--ar-accent) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+}
+
+/* Tab filter selectbox labels — LOB, Actuaire, Période */
+.st-key-f_lob_encours label,
+.st-key-f_act_encours label,
+.st-key-f_per_encours label,
+.st-key-f_lob_attente label,
+.st-key-f_act_attente label,
+.st-key-f_per_attente label,
+.st-key-f_lob_valides label,
+.st-key-f_act_valides label,
+.st-key-f_per_valides label {
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--ar-text-muted) !important;
+    margin-bottom: 2px !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* + Recette button */
+.st-key-pb_btn_recette button {
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    color: var(--ar-accent) !important;
+    background-color: var(--ar-accent-muted) !important;
+    border: 1px solid transparent !important;
+    border-radius: var(--ar-radius-sm) !important;
+    padding: 6px 14px !important;
+    min-height: 32px !important;
+    transition: var(--ar-transition) !important;
+}
+
+.st-key-pb_btn_recette button:hover {
+    background-color: var(--ar-accent) !important;
+    color: #FFFFFF !important;
+    transform: scale(1.02) !important;
+}
+
+/* ── KPI Card ── */
+.ar-kpi-card {
+    transition: var(--ar-transition);
+}
+
+.ar-kpi-card:hover {
+    border-color: var(--ar-border-focus) !important;
+    box-shadow: var(--ar-shadow-md) !important;
+    transform: translateY(-1px);
+}
+
+/* ── Status Badge ── */
+.badge-status,
+.ar-status-badge {
+    font-family: var(--ar-font-sans);
+    box-shadow: none;
+    transition: var(--ar-transition);
+}
+
+/* ── Stepper container ── */
+.stepper-container {
+    background-color: var(--ar-bg-surface);
+    border: 1px solid var(--ar-border);
+    border-radius: var(--ar-radius-lg);
+    padding: 14px 20px;
+    box-shadow: var(--ar-shadow-sm);
+}
+
+.step-circle {
+    background-color: var(--ar-bg-elevated);
+    border: 2px solid var(--ar-border);
+    color: var(--ar-text-muted);
+    transition: var(--ar-transition);
+}
+
+.step-circle.active {
+    background-color: var(--ar-accent);
+    border-color: var(--ar-accent);
+    color: #FFFFFF;
+}
+
+.step-circle.completed {
+    background-color: var(--ar-conforme);
+    border-color: var(--ar-conforme);
+    color: #FFFFFF;
+}
+
+.step-label {
+    color: var(--ar-text-muted);
+    font-family: var(--ar-font-sans);
+}
+
+.step-label.active {
+    color: var(--ar-accent-text);
+    font-weight: 600;
+}
+
+.step-label.completed {
+    color: var(--ar-text-primary);
+}
+
+.step-line {
+    background-color: var(--ar-border);
+}
+
+.step-line.active {
+    background-color: var(--ar-conforme);
+}
+
+/* ── Breadcrumb ── */
+.ar-breadcrumb {
+    font-family: var(--ar-font-sans);
+    font-size: var(--ar-font-size-sm);
+}
+
+.ar-breadcrumb-sep {
+    margin: 0 8px !important;
+    color: var(--ar-text-muted) !important;
+    font-weight: normal !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+}
+
+.ar-topbar-sep {
+    margin: 0 6px !important;
+    color: var(--ar-text-muted) !important;
+    font-weight: normal !important;
+    vertical-align: middle !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+}
+
+/* ── Campaign Track Card ── */
+.ar-campaign-card {
+    background-color: var(--ar-bg-surface);
+    border: 1px solid var(--ar-border);
+    border-radius: var(--ar-radius-lg);
+    padding: 16px 20px;
+    transition: var(--ar-transition);
+    margin-bottom: 8px;
+}
+
+.ar-campaign-card:hover {
+    border-color: var(--ar-border-focus);
+    box-shadow: var(--ar-shadow-md);
+    background-color: var(--ar-bg-hover);
+}
+
+/* ── Timeline (Audit Trail) ── */
+.timeline-track {
+    border-left-color: var(--ar-border);
+}
+
+.timeline-dot {
+    background-color: var(--ar-bg-elevated);
+    border-color: var(--ar-bg-surface);
+}
+
+.timeline-dot.completed {
+    background-color: var(--ar-conforme);
+}
+
+.timeline-dot.active {
+    background-color: var(--ar-accent);
+}
+
+.timeline-dot.warning {
+    background-color: var(--ar-warning);
+}
+
+.timeline-dot.rejected {
+    background-color: var(--ar-anomalie);
+}
+
+.timeline-time {
+    color: var(--ar-text-muted);
+}
+
+.timeline-title {
+    color: var(--ar-text-primary);
+}
+
+.timeline-desc {
+    color: var(--ar-text-secondary);
+}
+
+/* ── File Upload zone ── */
+div[data-testid="stFileUploader"] {
+    background-color: var(--ar-bg-elevated) !important;
+    border: 2px dashed var(--ar-border) !important;
+    border-radius: var(--ar-radius-md) !important;
+    transition: var(--ar-transition) !important;
+}
+
+div[data-testid="stFileUploader"]:hover {
+    border-color: var(--ar-accent) !important;
+    background-color: var(--ar-accent-muted) !important;
+}
+
+/* ── Expander dark ── */
+div[data-testid="stExpander"] {
+    background-color: var(--ar-bg-surface) !important;
+    border: 1px solid var(--ar-border) !important;
+    border-radius: var(--ar-radius-lg) !important;
+}
+
+div[data-testid="stExpander"] summary {
+    color: var(--ar-text-primary) !important;
+    font-weight: 500;
+}
+
+/* ── Alerts ── */
+div[data-testid="stAlert"] {
+    border-radius: var(--ar-radius-md) !important;
+    border: 1px solid var(--ar-border) !important;
+}
+
+/* Info */
+div[role="alert"][data-testid="stNotification"][data-type="info"] {
+    background-color: var(--ar-info-bg) !important;
+    border-left: 3px solid var(--ar-info) !important;
+}
+
+/* Success */
+div[role="alert"][data-testid="stNotification"][data-type="success"] {
+    background-color: var(--ar-conforme-bg) !important;
+    border-left: 3px solid var(--ar-conforme) !important;
+}
+
+/* Warning */
+div[role="alert"][data-testid="stNotification"][data-type="warning"] {
+    background-color: var(--ar-warning-bg) !important;
+    border-left: 3px solid var(--ar-warning) !important;
+}
+
+/* Error */
+div[role="alert"][data-testid="stNotification"][data-type="error"] {
+    background-color: var(--ar-anomalie-bg) !important;
+    border-left: 3px solid var(--ar-anomalie) !important;
+}
+
+/* ── Form container ── */
+div[data-testid="stForm"] {
+    background-color: var(--ar-bg-surface) !important;
+    border: 1px solid var(--ar-border) !important;
+    border-radius: var(--ar-radius-lg) !important;
+    padding: var(--ar-space-lg) !important;
+}
+
+/* ── Slider dark ── */
+div[data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {
+    background-color: var(--ar-accent) !important;
+}
+
+/* ── Download button ── */
+div.stDownloadButton > button {
+    background-color: var(--ar-bg-elevated) !important;
+    color: var(--ar-text-primary) !important;
+    border: 1px solid var(--ar-border) !important;
+    border-radius: var(--ar-radius-sm) !important;
+    transition: var(--ar-transition) !important;
+}
+
+div.stDownloadButton > button:hover {
+    background-color: var(--ar-bg-hover) !important;
+    border-color: var(--ar-accent) !important;
+}
+
+/* ── Hide Streamlit branding (Deploy button, footer) ── */
+/* NOTE: Do NOT hide header buttons — that kills the sidebar toggle */
+#MainMenu,
+div[data-testid="stDecoration"],
+div[data-testid="stStatusWidget"],
+footer {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* ── Custom styling for stToolbar to keep stExpandSidebarButton visible & clickable ── */
+div[data-testid="stToolbar"] {
+    display: flex !important;
+    visibility: visible !important;
+    background-color: transparent !important;
+    pointer-events: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Reactivate pointer events and visibility on the expand button wrapper chain */
+div[data-testid="stToolbar"] div:has(button[data-testid="stExpandSidebarButton"]),
+div[data-testid="stToolbar"] button[data-testid="stExpandSidebarButton"] {
+    display: flex !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Hide other toolbar items (like deploy buttons, settings, etc.) */
+div[data-testid="stToolbar"] > div:not(:has(button[data-testid="stExpandSidebarButton"])) {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+footer::after {
+    content: '' !important;
+    display: none !important;
+}
+
+/* ==========================================================================
+   LEGACY COCKPIT CLASSES — Dark theme bridge
+   Maps old monolith class names to new design tokens.
+   ========================================================================== */
+/* ── Cockpit Block Containers ── */
+.cockpit-block {
+    background-color: var(--ar-bg-surface);
+    border: 1px solid var(--ar-border);
+    border-radius: var(--ar-radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: var(--ar-transition);
+}
+
+.cockpit-block:hover {
+    box-shadow: var(--ar-shadow-md);
+    transform: translateY(-2px);
+}
+
+.cockpit-block-title {
+    font-family: var(--ar-font-sans);
+    font-size: var(--ar-font-size-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ar-text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cockpit-block-title svg {
+    opacity: 0.8;
+    color: var(--ar-accent);
+    filter: drop-shadow(0 1px 2px rgba(79, 70, 229, 0.2));
+}
+
+/* Equal height for side-by-side containers (KPI + Donut) */
+div[data-testid="stHorizontalBlock"] {
+    align-items: stretch !important;
+}
+div[data-testid="stColumn"] > div {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+div[data-testid="stColumn"] > div > div[data-testid="stVerticalBlockBorderWrapper"] {
+    flex: 1 !important;
+    height: auto !important;
+}
+
+/* ── KPI Cards (monolith: actua-kpi-card) ── */
+.actua-kpi-card {
+    background-color: var(--ar-bg-surface);
+    border: 1px solid var(--ar-border);
+    border-radius: var(--ar-radius-lg);
+    padding: 20px;
+    transition: var(--ar-transition);
+    position: relative;
+    box-shadow: var(--ar-shadow-sm);
+}
+
+.actua-kpi-card:hover {
+    border-color: var(--ar-border-focus);
+    box-shadow: var(--ar-shadow-lg) !important;
+    transform: translateY(-3px);
+}
+
+.actua-kpi-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.actua-kpi-title-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.actua-kpi-title {
+    font-family: var(--ar-font-sans);
+    font-size: var(--ar-font-size-sm);
+    font-weight: 600;
+    color: var(--ar-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+
+/* ── KPI Help Tooltip — card-level overlay (Streamlit compatible) ── */
+.actua-kpi-card {
+    position: relative;
+    overflow: visible !important;
+}
+
+.ar-kpi-tip {
+    font-size: 0.75rem;
+    color: var(--ar-text-muted);
+    cursor: help;
+    margin-left: 4px;
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.ar-kpi-tip:hover {
+    color: var(--ar-accent);
+}
+
+/* Tooltip body — direct child of .actua-kpi-card, full card width */
+.ar-kpi-tip-body {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--ar-text-primary);
+    color: var(--ar-bg-surface);
+    font-family: var(--ar-font-sans);
+    font-size: var(--ar-font-size-sm);
+    font-weight: 400;
+    line-height: 1.55;
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 14px 16px;
+    border-radius: var(--ar-radius-lg);
+    z-index: 99999;
+    box-shadow: var(--ar-shadow-lg);
+    pointer-events: none;
+}
+
+/* Show tooltip when hovering the ⓘ icon */
+.actua-kpi-card:has(.ar-kpi-tip:hover) .ar-kpi-tip-body {
+    display: block;
+}
+
+.actua-kpi-value {
+    font-family: var(--ar-font-mono) !important;
+    font-size: var(--ar-font-size-xl) !important;
+    font-weight: 800 !important;
+    color: var(--ar-text-primary) !important;
+    margin: 4px 0 8px 0 !important;
+    font-feature-settings: 'tnum' 1;
+}
+
+.actua-kpi-trend-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.actua-kpi-trend-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.trend-dot-green { background-color: var(--ar-conforme); }
+.trend-dot-red   { background-color: var(--ar-anomalie); }
+.trend-dot-blue  { background-color: var(--ar-info); }
+.trend-dot-orange{ background-color: var(--ar-warning); }
+
+.actua-kpi-trend-text {
+    font-family: var(--ar-font-sans);
+    font-size: var(--ar-font-size-xs);
+    color: var(--ar-text-muted);
+}
+
+div[data-testid="column"],
+div[data-testid="stColumn"],
+div[class*="stColumn"] {
+    position: relative !important;
+}
+
+/* Actuarial Context Dropdown popover container for KPI Cards */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"],
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"],
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"],
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"],
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"],
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] {
+    position: absolute !important;
+    top: 20px !important;       /* Aligned perfectly inside the card padding */
+    right: 20px !important;      /* Aligned perfectly to the right */
+    z-index: 9999 !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Actuarial Context Dropdown popover container for KPI List Rows */
+div[data-testid="column"]:has(.actua-kpi-row) div[data-testid="stPopover"],
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"],
+div[class*="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"],
+div[data-testid="column"]:has(.actua-kpi-row) div[class*="stPopover"],
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"],
+div[class*="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] {
+    position: absolute !important;
+    top: 4px !important;        /* Vertically centered in the 36px row height */
+    right: 12px !important;      /* Aligned perfectly to the right */
+    z-index: 9999 !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Style the native Streamlit popover button inside KPI elements to look like a premium icon button */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button,
+div[data-testid="column"]:has(.actua-kpi-row) div[data-testid="stPopover"] button,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button,
+div[class*="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button,
+div[data-testid="column"]:has(.actua-kpi-row) div[class*="stPopover"] button,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button,
+div[class*="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;       /* Subtle slate border */
+    border-radius: 8px !important;
+    width: 28px !important;                      /* Very clean and compact */
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #64748B !important;                   /* Slate gray color */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Inject premium horizontal dots "•••" text */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button::before,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button::before,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button::before,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button::before,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button::before,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button::before,
+div[data-testid="column"]:has(.actua-kpi-row) div[data-testid="stPopover"] button::before,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button::before,
+div[class*="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button::before,
+div[data-testid="column"]:has(.actua-kpi-row) div[class*="stPopover"] button::before,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button::before,
+div[class*="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button::before {
+    content: "•••" !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    color: #64748B !important;
+    line-height: 1 !important;
+    margin-top: -6px !important; /* Center the dots vertically */
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Remove default Streamlit popover label/down arrow if any */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button span,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button span,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button span,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button span,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button span,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button span,
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button p,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button p,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button p,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button p,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button p,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button p,
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button svg,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button svg,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button svg,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button svg,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button svg,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button svg,
+div[data-testid="column"]:has(.actua-kpi-row) div[data-testid="stPopover"] button span,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button span,
+div[class*="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button span,
+div[data-testid="column"]:has(.actua-kpi-row) div[class*="stPopover"] button span,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button span,
+div[class*="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button span,
+div[data-testid="column"]:has(.actua-kpi-row) div[data-testid="stPopover"] button p,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button p,
+div[class*="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button p,
+div[data-testid="column"]:has(.actua-kpi-row) div[class*="stPopover"] button p,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button p,
+div[class*="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button p,
+div[data-testid="column"]:has(.actua-kpi-row) div[data-testid="stPopover"] button svg,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button svg,
+div[class*="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button svg,
+div[data-testid="column"]:has(.actua-kpi-row) div[class*="stPopover"] button svg,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button svg,
+div[class*="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button svg {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Hover and active states */
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:hover,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:hover,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:hover,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button:hover,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button:hover,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button:hover,
+div[data-testid="column"]:has(.actua-kpi-row) div[data-testid="stPopover"] button:hover,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button:hover,
+div[class*="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button:hover,
+div[data-testid="column"]:has(.actua-kpi-row) div[class*="stPopover"] button:hover,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button:hover,
+div[class*="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+div[data-testid="column"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:active,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:active,
+div[class*="stColumn"]:has(.actua-kpi-card) div[data-testid="stPopover"] button:active,
+div[data-testid="column"]:has(.actua-kpi-card) div[class*="stPopover"] button:active,
+div[data-testid="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button:active,
+div[class*="stColumn"]:has(.actua-kpi-card) div[class*="stPopover"] button:active,
+div[data-testid="column"]:has(.actua-kpi-row) div[data-testid="stPopover"] button:active,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button:active,
+div[class*="stColumn"]:has(.actua-kpi-row) div[data-testid="stPopover"] button:active,
+div[data-testid="column"]:has(.actua-kpi-row) div[class*="stPopover"] button:active,
+div[data-testid="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button:active,
+div[class*="stColumn"]:has(.actua-kpi-row) div[class*="stPopover"] button:active {
+    background-color: #F1F5F9 !important;
+}
+
+/* ── Option 2: Unified Dense KPI List Layout ── */
+.actua-kpi-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    height: 36px !important;
+    padding: 2px 0 !important;
+}
+
+.icon-square-mini {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: var(--ar-radius-sm) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 12px !important;
+    flex-shrink: 0 !important;
+    border: 1px solid transparent !important;
+}
+
+.actua-kpi-row-title {
+    font-family: var(--ar-font-sans) !important;
+    font-size: var(--ar-font-size-xs) !important;
+    font-weight: 700 !important;
+    color: var(--ar-text-secondary) !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+}
+
+.actua-kpi-row-dots {
+    flex-grow: 1 !important;
+    border-bottom: 1.5px dashed var(--ar-border) !important;
+    margin: 0 16px !important;
+    align-self: center !important;
+}
+
+.actua-kpi-row-value {
+    font-family: var(--ar-font-mono) !important;
+    font-size: var(--ar-font-size-md) !important;
+    font-weight: 800 !important;
+    margin-right: 12px !important;
+    white-space: nowrap !important;
+    font-feature-settings: 'tnum' 1 !important;
+}
+
+.actua-kpi-row-badge-container {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-width: 70px !important;
+    justify-content: flex-end !important;
+}
+
+/* ── Icon squares ── */
+.icon-square-container {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--ar-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-bg-green  { background-color: rgba(5, 150, 105, 0.12); color: var(--ar-conforme); }
+.icon-bg-red    { background-color: rgba(220, 38, 38, 0.10); color: var(--ar-anomalie); }
+.icon-bg-blue   { background-color: rgba(37, 99, 235, 0.10); color: var(--ar-info); }
+.icon-bg-orange { background-color: rgba(217, 119, 6, 0.12); color: var(--ar-warning); }
+
+/* ── Campaign Track Cards (Gantt-style) ── */
+.gantt-card-block {
+    background-color: var(--ar-bg-surface);
+    border: 1px solid var(--ar-border);
+    border-radius: var(--ar-radius-lg);
+    padding: 14px 20px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--ar-transition);
+}
+
+.gantt-card-block:hover {
+    border-color: var(--ar-border-focus);
+    background-color: var(--ar-bg-hover);
+    box-shadow: var(--ar-shadow-md);
+}
+
+/* Override light-mode hardcoded colors inside gantt cards */
+.gantt-card-block h4 {
+    color: var(--ar-text-primary) !important;
+}
+
+.gantt-card-block p {
+    color: var(--ar-text-muted) !important;
+}
+
+.gantt-card-block div[style*="background-color: #F8FAFC"] {
+    background-color: var(--ar-bg-elevated) !important;
+    border-color: var(--ar-border) !important;
+}
+
+/* ── Priority Tags ── */
+.tag-priority {
+    font-family: var(--ar-font-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--ar-radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tag-priority-low {
+    background-color: var(--ar-conforme-bg);
+    color: var(--ar-conforme);
+}
+
+.tag-priority-medium {
+    background-color: var(--ar-warning-bg);
+    color: var(--ar-warning);
+}
+
+.tag-priority-high {
+    background-color: var(--ar-anomalie-bg);
+    color: var(--ar-anomalie);
+}
+
+/* ── Sidebar Brand Logo ── */
+.brand-actua,
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] div[style*="1.25rem"] span:first-child,
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] div[style*="1.25rem"] > span:first-child,
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span:first-child {
+    color: #4F46E5 !important;
+}
+.brand-recette,
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] div[style*="1.25rem"] span:nth-child(2),
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] div[style*="1.25rem"] > span:nth-child(2),
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span:nth-child(2) {
+    color: #0F172A !important;
+    font-weight: 500 !important;
+}
+
+/* ── Sidebar nav buttons ── */
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+    gap: 2px !important;
+}
+
+section[data-testid="stSidebar"] div.stButton {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+section[data-testid="stSidebar"] div.stButton > button {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    padding: 4px 16px !important;
+    font-size: var(--ar-font-size-sm) !important;
+    font-weight: 500 !important;
+    border-radius: var(--ar-radius-md) !important;
+    margin-bottom: 1px !important;
+    min-height: 30px !important;
+    transition: var(--ar-transition) !important;
+    border: 1px solid transparent !important;
+}
+
+/* Inactive nav buttons */
+section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"] {
+    background-color: transparent !important;
+    color: var(--ar-text-secondary) !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+}
+
+section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"]:hover {
+    background-color: var(--ar-bg-elevated) !important;
+    color: var(--ar-text-primary) !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Active nav button — accent indicator */
+section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-primary"] {
+    background-color: var(--ar-accent-muted) !important;
+    color: var(--ar-accent) !important;
+    border: 1px solid transparent !important;
+    border-left: 3px solid var(--ar-accent) !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+}
+
+/* Separate utility button for Logout */
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div.stButton:last-of-type {
+    margin-top: 1.5rem !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div.stButton:last-of-type > button {
+    color: var(--ar-text-muted) !important;
+    background-color: transparent !important;
+    border: 1px solid var(--ar-border) !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div.stButton:last-of-type > button:hover {
+    color: var(--ar-anomalie) !important;
+    background-color: var(--ar-anomalie-bg) !important;
+    border-color: var(--ar-anomalie) !important;
+}
+
+/* Focus-visible for keyboard navigation */
+section[data-testid="stSidebar"] div.stButton > button:focus-visible {
+    outline: 2px solid var(--ar-accent) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15) !important;
+}
+
+/* ══ RESPONSIVE BREAKPOINTS ══ */
+@media (max-width: 768px) {
+    .cockpit-block-title { font-size: 0.8rem; }
+    .actua-kpi-card { padding: 12px !important; }
+    .actua-kpi-value { font-size: 1.2rem !important; }
+    .gantt-card-block { flex-direction: column !important; gap: 8px !important; }
+    .ar-topbar { flex-direction: column; gap: 8px; padding: 12px 16px !important; }
+}
+
+@media (max-width: 480px) {
+    .actua-kpi-card { padding: 8px !important; }
+    .actua-kpi-value { font-size: 1rem !important; }
+    .ar-topbar { padding: 8px 12px !important; }
+    .cockpit-block-title { font-size: 0.75rem; }
+}
+
+@media print {
+    .ar-topbar, section[data-testid="stSidebar"] { display: none !important; }
+    .actua-kpi-card { break-inside: avoid; border: 1px solid #E2E8F0 !important; }
+}
+
+/* ── Tooltips Bulle d'aide (Option A) ── */
+.ar-kpi-tip {
+    position: relative !important;
+    cursor: help !important;
+    margin-left: 6px !important;
+    color: var(--ar-text-muted) !important;
+    font-size: 0.72rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.ar-kpi-tip-text {
+    visibility: hidden !important;
+    position: absolute !important;
+    bottom: 130% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background-color: var(--ar-bg-elevated) !important;
+    color: var(--ar-text-primary) !important;
+    border: 1px solid var(--ar-border) !important;
+    border-radius: var(--ar-radius-md) !important;
+    padding: 8px 12px !important;
+    width: 220px !important;
+    font-size: 0.72rem !important;
+    line-height: 1.4 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-weight: 500 !important;
+    box-shadow: var(--ar-shadow-lg) !important;
+    z-index: 999999 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+/* Tooltip arrow */
+.ar-kpi-tip-text::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-width: 6px !important;
+    border-style: solid !important;
+    border-color: var(--ar-border) transparent transparent transparent !important;
+}
+
+.ar-kpi-tip:hover .ar-kpi-tip-text {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translate(-50%, -2px) !important;
+}
+
+/* ── Option B: Compact Dashboard Layout Spacing ── */
+div[data-testid="stVerticalBlock"] {
+    gap: 0.4rem !important;
+}
+div[data-testid="stVerticalBlockBorderWrapper"] > div {
+    padding: 0.5rem 1.0rem !important;
+}
+
+

@@ -1,0 +1,253 @@
+/* ==========================================================================
+   ActuaRecette v6.0 \u2014 Page Transitions & Micro-animations (Phase 4)
+   ==========================================================================
+   Animations d'entr\u00e9e, transitions entre pages, et micro-interactions
+   pour une UX premium et fluide.
+   ========================================================================== */
+
+/* 1. PAGE ENTRANCE ANIMATION */
+@keyframes ar-page-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ar-page-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes ar-slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ar-slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes ar-scale-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Stagger delay utility classes */
+.ar-delay-1 { animation-delay: 0.05s !important; }
+.ar-delay-2 { animation-delay: 0.10s !important; }
+.ar-delay-3 { animation-delay: 0.15s !important; }
+.ar-delay-4 { animation-delay: 0.20s !important; }
+.ar-delay-5 { animation-delay: 0.25s !important; }
+
+/* 2. MAIN CONTENT ENTRANCE */
+section.main > div.block-container {
+    animation: ar-page-enter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* 3. CARD & SURFACE HOVER EFFECTS */
+div.stCard,
+div[data-testid="stExpander"] {
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+div.stCard:hover {
+    transform: translateY(-1px) !important;
+}
+
+/* 4. BUTTON PRESS EFFECT */
+div.stButton > button {
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.1s ease !important;
+}
+
+div.stButton > button:active {
+    transform: scale(0.97) !important;
+}
+
+/* 5. KPI CARD COUNTER ANIMATION */
+@keyframes ar-count-up {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    animation: ar-count-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Stagger metrics */
+div[data-testid="column"]:nth-child(1) div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    animation-delay: 0s;
+}
+div[data-testid="column"]:nth-child(2) div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    animation-delay: 0.08s;
+}
+div[data-testid="column"]:nth-child(3) div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    animation-delay: 0.16s;
+}
+div[data-testid="column"]:nth-child(4) div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    animation-delay: 0.24s;
+}
+
+/* 6. TAB SWITCH ANIMATION */
+div.stTabs [data-baseweb="tab"] {
+    transition:
+        color 0.15s ease,
+        border-bottom-color 0.2s ease !important;
+    position: relative;
+}
+
+div.stTabs [data-baseweb="tab"]::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--ar-accent);
+    transition: width 0.2s ease, left 0.2s ease;
+}
+
+div.stTabs [data-baseweb="tab"][aria-selected="true"]::after {
+    width: 100%;
+    left: 0;
+}
+
+/* 7. EXPANDER SMOOTH OPEN */
+div[data-testid="stExpander"] details[open] > div {
+    animation: ar-page-fade 0.25s ease both;
+}
+
+/* 8. NOTIFICATION TOAST ANIMATION */
+@keyframes ar-toast-enter {
+    0% {
+        opacity: 0;
+        transform: translateX(100%) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes ar-toast-exit {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+.ar-toast {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 10000;
+    min-width: 320px;
+    max-width: 420px;
+    padding: 14px 18px;
+    background: var(--ar-bg-elevated);
+    border: 1px solid var(--ar-border);
+    border-radius: var(--ar-radius-md);
+    box-shadow: var(--ar-shadow-lg);
+    font-family: var(--ar-font-sans);
+    font-size: var(--ar-font-size-sm);
+    color: var(--ar-text-primary);
+    animation: ar-toast-enter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    cursor: pointer;
+}
+
+.ar-toast.ar-toast--exit {
+    animation: ar-toast-exit 0.25s ease both;
+}
+
+.ar-toast--success { border-left: 3px solid var(--ar-conforme); }
+.ar-toast--warning { border-left: 3px solid var(--ar-warning); }
+.ar-toast--error   { border-left: 3px solid var(--ar-anomalie); }
+.ar-toast--info    { border-left: 3px solid var(--ar-info); }
+
+.ar-toast__title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.ar-toast__body {
+    color: var(--ar-text-secondary);
+    font-size: var(--ar-font-size-xs);
+}
+
+/* 9. PROGRESS BAR GLOW */
+@keyframes ar-progress-glow {
+    0% { box-shadow: 0 0 4px var(--ar-accent-muted); }
+    50% { box-shadow: 0 0 12px var(--ar-accent-muted); }
+    100% { box-shadow: 0 0 4px var(--ar-accent-muted); }
+}
+
+div[data-testid="stProgress"] > div > div {
+    animation: ar-progress-glow 2s ease-in-out infinite;
+    border-radius: var(--ar-radius-full);
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 10. KEYBOARD SHORTCUT HINTS */
+.ar-kbd {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px 6px;
+    font-family: var(--ar-font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--ar-text-muted);
+    background: var(--ar-bg-elevated);
+    border: 1px solid var(--ar-border);
+    border-radius: 4px;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+/* 11. REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
