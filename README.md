@@ -1,4 +1,4 @@
-# 🧪 ActuaRecette v6.0 : Enterprise Actuarial UAT & Spec Governance Platform
+# ActuaRecette : Enterprise Actuarial UAT & Spec Governance Platform
 
 **ActuaRecette** est une plateforme SaaS B2B ultra-premium dédiée à la **gouvernance technique et à la recette fonctionnelle (UAT)** des modèles de tarification d'assurance. Elle permet aux actuaires conseils, risk managers, et équipes MOA d'auditer la qualité des portefeuilles, de réconcilier de manière unitaire les calculs financiers complexes, et d'isoler instantanément les anomalies de programmation de la DSI pour respecter les exigences de conformité réglementaire de **Solvabilité II**.
 
